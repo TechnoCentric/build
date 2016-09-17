@@ -87,7 +87,8 @@ class ProjectsController extends Controller
     public function showReport($id)
     {
         $project = Project::findOrFail($id);
-        $reports = $project->reports;        
+        $quack = $project->reports; 
+        $reports = $quack->sortByDesc('date');               
         return view('projects.reports',compact('project', 'reports'));
     }
 

@@ -38,4 +38,54 @@ Route::get('/users/create' , function(){
 	return view('users.create');
 });
 
+Route::get('bulk', function ()
+{	
+	$projects = \App\Project::all();
+	return view('projects.bulk', compact('projects'));
+});
+Route::post('bulk', function ()
+{	
+	$project = Request::input('project_id');
+		$results = \Excel::load(Request::file('file'))->get();
+		 foreach ($results as $row) {
+				
+				if($row->material_type) {
+					$material = new \App\Material;
+					$material->material_type = $row->material_type;
+					$material->amount_paid = $row->amount_paid;
+					$material->payment_date = $row->payment_date;
+					$material->payment_type = $row->payment_type;
+					$material->paid_to = $row->paid_to;
+					$material->payment_status = $row->payment_status;
+					$material->project_id = $project;												
+					$material->save();					
+				}
+				else{ 
+					\flash('Workbook does not contain the right columns. Please check the format', 'danger');
+					return redirect()->back();
+				}				
+			}			
+				
+		\flash('Bulk Upload Performed successfully', 'success');
+		return redirect()->back();		
+});
+
 Route::post('/users', 'HomeController@create');
+
+Route::get('/report',  function(){
+	$projects = \App\Project::all();
+	return view('report', compact('projects'));
+});
+
+Route::post('/results', function()
+{
+	$date = Request::input('report_date');
+	$project = Request::input('project_id');
+
+	$matchThese = ['project_id' => $project, 'payment_date' => $date];
+	$materials = \App\Material::where('project_id', '=', $project)
+								->where('payment_date', '=', $date)
+								->get(); 
+
+	return $materials;
+});
