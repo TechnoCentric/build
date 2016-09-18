@@ -24,7 +24,7 @@ class CreateMaterialsTable extends Migration
             $table->string("payment_status");
             $table->integer('project_id')->unsigned();
 
-            $table->foreign('project_id')->references('id')->on('pojects');
+            $table->foreign('project_id')->references('id')->on('pojects')->onDelete('cascade');
             
             $table->timestamps();            
         });
