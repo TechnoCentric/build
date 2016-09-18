@@ -14,6 +14,7 @@ class CreateReportsTable extends Migration
     {
         //
         Schema::create('reports', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->date("date")->nullable();
             $table->string("body");
