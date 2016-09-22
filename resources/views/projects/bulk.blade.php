@@ -20,9 +20,9 @@
                         @endforeach                       
                     </select>             
             <p class="help-block"></p>
-            @if($errors->has('type'))
+            @if($errors->has('project_id'))
                 <p class="help-block">
-                    {{ $errors->first('type') }}
+                    {{ $errors->first('project_id') }}
                 </p>
             @endif
         </div>

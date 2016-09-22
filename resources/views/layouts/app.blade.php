@@ -141,6 +141,9 @@
         <li>
           <a href="{{url('/report')}}"><i class="fa fa-area-chart text-orange-4"></i><span>Reports Generation</span></a>
         </li>
+        <li>
+          <a href="{{url('/bulk')}}"><i class="fa fa-file-excel-o  text-lightblue-4"></i><span>Bulk Upload</span></a>
+        </li>
  
              <div class="clearfix"></div>
     </div>
@@ -224,7 +227,7 @@
     <!-- Demo Specific JS Libraries -->
     <script src="assets/libs/prettify/prettify.js"></script>
 
-    <script src="assets/js/init.js"></script>
+    <script src="{{url('assets/js/init.js')}}"></script>
     <!-- Page Specific JS Libraries -->
     <script src="assets/libs/d3/d3.v3.js"></script>
     <script src="assets/libs/rickshaw/rickshaw.min.js"></script>

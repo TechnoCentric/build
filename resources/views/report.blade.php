@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-    Materials Bulk Upload
+   Reports Generation
 @endsection
 
 @section('content')
-    <h3 class="page-title"> Materials Bulk Upload</h3>
+    <h3 class="page-title"> Reports Generation</h3>
 
     {!! Form::open(['method' => 'POST', 'url' => '/results']) !!}
       {{ csrf_field() }}
@@ -20,9 +20,9 @@
                         @endforeach                       
                     </select>             
             <p class="help-block"></p>
-            @if($errors->has('type'))
+            @if($errors->has('project_id'))
                 <p class="help-block">
-                    {{ $errors->first('type') }}
+                    {{ $errors->first('project_id') }}
                 </p>
             @endif
         </div>

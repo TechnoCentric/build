@@ -86,4 +86,51 @@ class MaterialsController extends Controller
         return redirect()->route('materials.index');
     }
 
+    public function bulkUpload(Requests\uploadRequest $request)
+    {
+       $project = $request->input('project_id');
+        $results = \Excel::load($request->file('file'))->get();
+         foreach ($results as $row) {
+                
+                if($row->material_type) {
+                    $material = new \App\Material;
+                    $material->material_type = $row->material_type;
+                    $material->amount_paid = $row->amount_paid;
+                    $material->payment_date = $row->payment_date;
+                    $material->payment_type = $row->payment_type;
+                    $material->paid_to = $row->paid_to;
+                    $material->payment_status = $row->payment_status;
+                    $material->project_id = $project;                                               
+                    $material->save();                  
+                }
+                else{ 
+                    \flash('Workbook does not contain the right columns. Please check the format', 'danger');
+                    return redirect()->back();
+                }               
+            }           
+                
+        \flash('Bulk Upload Performed successfully', 'success');
+        return redirect()->back();  
+    }
+
+    public function generateReport(Requests\reportRequest $request)
+    {
+        $report_name = $request->input('report_date').'_'.$request->input('end_date');
+        $start       = $request->input('report_date');
+        $end         = $request->input('end_date');
+        $project     = $request->input('project_id'); 
+        \Excel::create('report-'.$report_name, function($excel) {            
+            $excel->sheet('New sheet', function($sheet) {                 
+
+                $materials =\App\Material::where('project_id', '=', $project)
+                        ->whereBetween('payment_date', [$start, $end])
+                        ->get();
+
+                $sheet->fromArray($materials);
+
+            });
+
+        })->download('xls');
+    }
+
 }
