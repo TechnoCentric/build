@@ -5,30 +5,16 @@
 @endsection
 
 @section('content')
-
-    <div tabindex="-1" class="modal fade bs-example-modal-sm" role="dialog" aria-hidden="true" aria-labelledby="mySmallModalLabel" style="display: none;">
-                                <div class="modal-dialog modal-sm">
-                                  <div class="modal-content">
-
-                                    <div class="modal-header">
-                                      <button class="close" aria-hidden="true" type="button" data-dismiss="modal">×</button>
-                                      <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                      ...
-                                    </div>
-                                  </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                              </div>
-	<div class=" row">
+    
+	<div class=" row" style="margin-bottom:10px;">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<img src="/img/{{$project->picture}}">
 		</div>
 
 
-        <p><button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                  Standard Modal
-                                </button></p>
+        <p style="margin:25px; padding:10px;"><a class="btn btn-primary" href="/projects/{{$project->id}}/reports">
+                                 Site Reports
+                                </a></p>
 
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<table class="table table-bordered table-striped datatable">
