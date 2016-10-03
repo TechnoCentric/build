@@ -7,8 +7,12 @@
 @section('content')
     <h3 class="page-title">Reports</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['reports.store']]) !!}
-
-    <div class="panel panel-default">
+    <p>&nbsp;</p>
+    <div class="col-md-3">
+        
+    </div>
+    <div class="col-md-6">
+       <div class="panel panel-default">
         <div class="panel-heading">
             New Report
         </div>
@@ -61,8 +65,13 @@
     </div>
 
     {!! Form::submit('Save',['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!}
-@stop
+    {!! Form::close() !!} 
+    </div>   
+    <div class="col-md-3">
+        
+    </div> 
+@endsection
+
 
 @section('javascript')
     @parent

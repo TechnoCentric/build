@@ -16,7 +16,7 @@
               <div class="col-sm-4 col-xs-4 col-md-4">
                 <div class="thumbnail" style="height:100%">
                     <a href="/projects/{{$project->id}}">
-                      <img src="/img/{{$project->picture}} " width="200" >
+                      <img src="/img/{{$project->picture}} ">
                     </a>
                     <div class="caption" align="center">
                       <h4>{{$project->name}}</h4>                                                     

@@ -164,7 +164,8 @@
         <!-- Left Sidebar End -->        
         <!-- Start right content -->
         <div class="content-page" style="padding-top: 60px;">
-            @yield('content')                               
+            @yield('content') 
+        </div>                              
         <!-- Footer Start -->
         <footer>
             BuildOptions App| Powered By <a href="http://www.technocentric.net" target="_blank">TechnoCentric</a>

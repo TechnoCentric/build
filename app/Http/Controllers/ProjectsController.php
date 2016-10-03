@@ -75,8 +75,10 @@ class ProjectsController extends Controller
     public function show($id)
     {
         $project = Project::findOrFail($id);
-        $materials = $project->materials;        
-        return view('projects.show',compact('project', 'materials'));
+        $materials = $project->materials;
+        $cement = Material::where('project_id', '=', $project->id)
+                            ->where('material_type', '=', 'Cement')->get();        
+        return view('projects.show',compact('project', 'materials', 'cement'));
     }
 
     /**
