@@ -102,7 +102,7 @@
 </div>
 <!-- Top Bar End -->
  
-    <div class="left side-menu">
+<div class="left side-menu">
   <div class="sidebar-inner slimscrollleft">
     <!-- Search form -->
  
@@ -151,21 +151,20 @@
     <div class="clearfix"></div><br>
     <br>
     <br>
-  </div>
- 
-          <div class="left-footer">
-            <div class="progress progress-xs">
-              <div class="progress-bar bg-green-1" style="width: 80%">
-                <span class="progress-precentage">80%</span>
-              </div><a class="btn btn-default md-trigger fa fa-inbox" data-modal="task-progress" data-toggle="tooltip" style="font-style: italic" title="See task progress"></a>
-            </div>
-          </div>
-        </div>
+  </div>          
+</div>
         <!-- Left Sidebar End -->        
         <!-- Start right content -->
         <div class="content-page" style="padding-top: 60px;">
+          @if (session()->has('flash_notification.message'))
+              <div class="alert alert-{{ session('flash_notification.level') }}">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                  {!! session('flash_notification.message') !!}
+              </div>
+          @endif
             @yield('content') 
-        </div>                              
+                                     
         <!-- Footer Start -->
         <footer>
             BuildOptions App| Powered By <a href="http://www.technocentric.net" target="_blank">TechnoCentric</a>
@@ -182,15 +181,7 @@
         </div>
         <!-- End right content -->
 
-    </div>
-    <div id="contextMenu" class="dropdown clearfix">
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:static;margin-bottom:5px;">
-                <li><a tabindex="-1" href="javascript:;" data-priority="high"><i class="fa fa-circle-o text-red-1"></i> High Priority</a></li>
-                <li><a tabindex="-1" href="javascript:;" data-priority="medium"><i class="fa fa-circle-o text-orange-3"></i> Medium Priority</a></li>
-                <li><a tabindex="-1" href="javascript:;" data-priority="low"><i class="fa fa-circle-o text-yellow-1"></i> Low Priority</a></li>
-                <li><a tabindex="-1" href="javascript:;" data-priority="none"><i class="fa fa-circle-o text-lightblue-1"></i> None</a></li>
-            </ul>
-        </div>
+    </div>    
     <!-- End of page -->
         <!-- the overlay modal element -->
     <div class="md-overlay"></div>
@@ -246,5 +237,8 @@
     @include('partials.javascripts')
 
     @yield('javascript')
+    <script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
     </body>
 </html>

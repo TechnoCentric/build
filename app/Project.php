@@ -19,5 +19,9 @@ class Project extends Model
     {
     	return $this->hasMany('\App\Report');
     }
+    public function Files()
+    {
+        return $this->hasMany('\App\File');
+    }
 
 }

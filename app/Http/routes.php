@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 
 Route::auth();
+Route::resource('files', 'FilesController');
 Route::resource('materials', 'MaterialsController');
 
 Route::resource('reports', 'ReportsController');
@@ -27,6 +28,13 @@ Route::resource('reports', 'ReportsController');
 Route::resource('projects', 'ProjectsController');
 
 Route::get('projects/{id}/reports', 'ProjectsController@showReport');
+
+Route::get('projects/{id}/files/create', 'ProjectsController@createFile');
+
+Route::get('projects/{id}/files/{file}', 'ProjectsController@showFile');
+
+Route::get('projects/{id}/files/{file}/materials/create', 'ProjectsController@createMaterial');
+
 
 Route::get('/home', 'HomeController@index');
 Route::get('/users', function(){
@@ -72,19 +80,18 @@ Route::post('/results', function()
 				})->download('xls');	
 });
 
-Route::get('/blob', function ()
+/*Route::get('/blob', function ()
 {
 	$materials = DB::table('materials')->select('material_type', 'amount_paid', 'payment_date', 'payment_type', 'paid_to', 'payment_status', 'project_id')
 		->where('project_id', '=', 1)		
 		->get();
 
 		return $materials;
-});
+});*/
 
 Route::get('/bob', function ()
 {
-	$materials =\App\Material::where('project_id', '=', 1)								
-								->get(); 	 
+	$files =\App\File::all(); 	 
 
-		return $materials;
+		return $files;
 });

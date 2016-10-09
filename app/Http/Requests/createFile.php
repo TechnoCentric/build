@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class storeMaterials extends Request
+class createFile extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,8 @@ class storeMaterials extends Request
     public function rules()
     {
         return [
-            //
-            'material_type' => 'required',
-            'amount_paid' => 'required|numeric',
-            'payment_date' => 'required',
-            'paid_to' => 'required|string',
-            'payment_type' => 'required',
-            'material_name' => 'required|string',
-            'lpo' => 'required|string',
-            'project_id' => 'required',
+            'name'          => 'required|string',
+            'project_id'    => 'required'
         ];
     }
 }

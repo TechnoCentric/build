@@ -8,7 +8,8 @@
     <h3 class="page-title">Reports</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['reports.store']]) !!}
     <p>&nbsp;</p>
-    <div class="col-md-3">
+    <div class="row">
+        <div class="col-md-3">
         
     </div>
     <div class="col-md-6">
@@ -60,16 +61,15 @@
                     @endif
                 </div>
             </div>
-            
+            {!! Form::submit('Save',['class' => 'btn btn-primary']) !!}
+            {!! Form::close() !!}  
         </div>
-    </div>
-
-    {!! Form::submit('Save',['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!} 
+    </div>    
     </div>   
     <div class="col-md-3">
         
     </div> 
+    </div>
 @endsection
 
 

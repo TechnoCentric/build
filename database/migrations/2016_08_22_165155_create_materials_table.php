@@ -17,15 +17,18 @@ class CreateMaterialsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string("material_type");
+            $table->string("material_name");
+            $table->string("lpo");
             $table->decimal("amount_paid", 15, 2);
             $table->date("payment_date")->nullable();
             $table->string("paid_to");
-            $table->string("payment_type");
-            $table->string("payment_status");
+            $table->string("payment_type");           
             $table->integer('project_id')->unsigned();
+            $table->integer('file_id')->unsigned();
 
-            $table->foreign('project_id')->references('id')->on('pojects')->onDelete('cascade');
-            
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
+
             $table->timestamps();            
         });
     }

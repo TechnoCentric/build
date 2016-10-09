@@ -75,10 +75,8 @@ class ProjectsController extends Controller
     public function show($id)
     {
         $project = Project::findOrFail($id);
-        $materials = $project->materials;
-        $cement = Material::where('project_id', '=', $project->id)
-                            ->where('material_type', '=', 'Cement')->get();        
-        return view('projects.show',compact('project', 'materials', 'cement'));
+        $files = $project->files;       
+        return view('projects.show',compact('project', 'files'));
     }
 
     /**
@@ -92,6 +90,28 @@ class ProjectsController extends Controller
         $quack = $project->reports; 
         $reports = $quack->sortByDesc('date');               
         return view('projects.reports',compact('project', 'reports'));
+    }
+
+    public function showFile($id, $file)
+    {
+        $project = Project::findOrFail($id);
+        $file = \App\File::find($file);
+        $quack = $file->materials; 
+        $materials = $quack->sortByDesc('date');               
+        return view('projects.file',compact('project', 'file', 'materials'));
+    }
+
+    public function createFile($id)
+    {
+        $project = Project::findOrFail($id);                        
+        return view('files.create',compact('project'));
+    }
+
+     public function createMaterial($id, $file)
+    {
+        $project = Project::findOrFail($id);
+        $file = \App\File::find($file);                      
+        return view('materials.create',compact('project', 'file'));
     }
 
     /**

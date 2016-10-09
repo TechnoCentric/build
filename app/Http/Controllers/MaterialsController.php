@@ -47,19 +47,24 @@ class MaterialsController extends Controller
      */
     public function store(Requests\storeMaterials $request)
     {
-    	Material::create([
+    	$file = \App\File::find($request['file_id']);
+        $file->total += $request['amount_paid'];
+        $file->save();    
+        Material::create([
+            'material_name' => $request['material_name'] ,
             'material_type' => $request['material_type'] ,
             'amount_paid' => $request['amount_paid'] ,
             'payment_date' => $request['payment_date'] ,
+            'lpo' => $request['lpo'],
             'paid_to' => $request['paid_to'] ,
             'payment_type' => $request['payment_type'] ,
-            'payment_status' =>$request['payment_status'] ,
+            'file_id' => $request['file_id'] ,
             'project_id' => $request['project_id']
-            ]);
+            ]);       
 
     	flash('Record Added', 'success');
         $materials = Material::all();
-    	return view('materials.index', compact('materials'));
+    	return redirect()->back();
     }
 
     public function edit($id)
@@ -80,6 +85,10 @@ class MaterialsController extends Controller
     public function destroy($id)
     {
         $material = Material::findOrFail($id);
+        $num = $material->file_id;
+        $file = \App\File::find($num);
+        $file->total -= $material->amount_paid;
+        $file->save();    
         $material->delete();
 
         flash('Record Deleted', 'danger');

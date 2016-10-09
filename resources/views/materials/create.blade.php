@@ -7,18 +7,44 @@
 @section('content')
     <h3 class="page-title">Add new Record</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['materials.store']]) !!}
-      
     <div class="row">
         <div class="col-xs-12 form-group">
             {!! Form::token()!!}
-            {!! Form::label('material_type', 'Material Type', ['class' => 'control-label']) !!}
+            {!! Form::label('material_name', 'Item Name', ['class' => 'control-label']) !!}
+            {!! Form::text('material_name', old('material_name'), ['class' => 'form-control']) !!}
+            
+            <p class="help-block"></p>
+            @if($errors->has('material_name'))
+                <p class="help-block">
+                    {{ $errors->first('material_name') }}
+                </p>
+            @endif
+        </div>
+    </div> 
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            {!! Form::token()!!}
+            {!! Form::label('material_type', 'Item Type', ['class' => 'control-label']) !!}
             {!! Form::text('material_type', old('material_type'), ['class' => 'form-control']) !!}
-
-            {!! Form::text('project_id', '1', ['hidden' => 'true'])!!}
+            
             <p class="help-block"></p>
             @if($errors->has('material_type'))
                 <p class="help-block">
                     {{ $errors->first('material_type') }}
+                </p>
+            @endif
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            {!! Form::token()!!}
+            {!! Form::label('lpo', 'LPO Number', ['class' => 'control-label']) !!}
+            {!! Form::text('lpo', old('lpo'), ['class' => 'form-control']) !!}
+            
+            <p class="help-block"></p>
+            @if($errors->has('lpo'))
+                <p class="help-block">
+                    {{ $errors->first('lpo') }}
                 </p>
             @endif
         </div>
@@ -70,22 +96,10 @@
                 </p>
             @endif
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 form-group">
-            {!! Form::label('payment_status', 'Payment Status', ['class' => 'control-label']) !!}
-            {!! Form::text('payment_status', old('payment_status'), ['class' => 'form-control']) !!}
-            <p class="help-block"></p>
-            @if($errors->has('payment_status'))
-                <p class="help-block">
-                    {{ $errors->first('payment_status') }}
-                </p>
-            @endif
-        </div>
-    </div>
+    </div>   
       
-
-
+    {!!Form::hidden('project_id', $project->id)!!}
+    {!!Form::hidden('file_id', $file->id)!!}   
     {!! Form::submit('Save',['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 @stop
