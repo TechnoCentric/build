@@ -13,10 +13,8 @@
 
 Route::get('/', function () {
 	$projects = \App\Project::all();
-	$materials = \App\Material::all();
-	$pending = \App\Material::where('payment_status', 'LIKE',  '%'.'Pending'.'%')->get();
-	$paid = \App\Material::where('payment_status', 'LIKE' , '%'.'Paid'.'%')->get();
-    return view('welcome', compact('projects', 'materials', 'pending', 'paid')) ;
+	$materials = \App\Material::all();	
+    return view('welcome', compact('projects', 'materials')) ;
 });
 
 Route::auth();
