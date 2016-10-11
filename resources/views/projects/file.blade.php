@@ -18,36 +18,21 @@
                 <table class="table table-bordered table-striped datatable">
                     <thead>
                     <tr>
-                        <th>Material Type</th>
+                        <th>Item Name</th>
                     <th>Amount Paid</th>
                     <th>Payment Date</th>
                     <th>Paid To</th>
-                    <th>Payment Type</th>
-                    <th>Payment Status</th>
-                    
-                        <th>&nbsp;</th>
+                    <th>Payment Type</th>                                                               
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($materials as $material)
                         <tr>
-                            <td>{{ $material->material_type }}</td>
+                            <td>{{ $material->material_name }}</td>
                         <td>&#8358;{{ number_format($material->amount_paid, 2) }}</td>
-                        <td>{{ $material->payment_date->format('d-m-Y')}}</td>
+                        <td>{{ $material->payment_date->toFormattedDateString()}}</td>
                         <td>{{ $material->paid_to }}</td>
-                        <td>{{ $material->payment_type }}</td>
-                        <td>{{ $material->payment_status }}</td>
-                        
-                            <td>
-                                <a href="{{ route('materials.edit',[$material->id]) }}" class="btn btn-xs btn-info">Edit</a>
-                                {!! Form::open(array(
-            'style' => 'display: inline-block;',
-            'method' => 'DELETE',
-            'onsubmit' => "return confirm('".trans("Are you sure?")."');",
-            'route' => ['materials.destroy', $material->id])) !!}
-{!! Form::submit('Delete', array('class' => 'btn btn-xs btn-danger')) !!}
-{!! Form::close() !!}
-                            </td>
+                        <td>{{ $material->payment_type }}</td>                                                                           
                         </tr>
                     @endforeach
                     </tbody>

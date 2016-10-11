@@ -5,21 +5,28 @@
 @endsection
 
 @section('content')
-    <h3 class="page-title">Add new Record</h3>
-    {!! Form::open(['method' => 'POST', 'route' => ['materials.store']]) !!}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Add New Item
+        </div>
+        <div class="panel-body">
+            {!! Form::open(['method' => 'POST', 'route' => ['materials.store']]) !!}
     <div class="row">
-        <div class="col-xs-12 form-group">
+        <div class="col-md-4 col-offset-2 form-group">
             {!! Form::token()!!}
-            {!! Form::label('material_name', 'Item Name', ['class' => 'control-label']) !!}
-            {!! Form::text('material_name', old('material_name'), ['class' => 'form-control']) !!}
+            {!! Form::label('material_name', 'Item Name', ['class' => 'control-label', 'align' => 'right']) !!}
+         </div>
+         <div class="col-md-6">
+              {!! Form::text('material_name', old('material_name'), ['class' => 'form-control']) !!}
+         </div>
+           
             
             <p class="help-block"></p>
             @if($errors->has('material_name'))
                 <p class="help-block">
                     {{ $errors->first('material_name') }}
                 </p>
-            @endif
-        </div>
+            @endif       
     </div> 
     <div class="row">
         <div class="col-xs-12 form-group">
@@ -100,8 +107,13 @@
       
     {!!Form::hidden('project_id', $project->id)!!}
     {!!Form::hidden('file_id', $file->id)!!}   
-    {!! Form::submit('Save',['class' => 'btn btn-danger']) !!}
+    {!! Form::submit('Save',['class' => 'btn btn-success']) !!}
+    <a class="btn btn-danger" href="/projects/{{$project->id}}"> Cancel</a>
     {!! Form::close() !!}
+        </div>
+    </div>
+    <h3 class="page-title">Add new Record</h3>
+    
 @stop
 
 @section('javascript')

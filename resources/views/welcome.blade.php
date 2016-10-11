@@ -27,41 +27,14 @@ Dashboard
 
                 </div>
                 <div class="text-box">
-                  <p class="maindata">TOTAL <b>PROCUREMENT AMOUNT</b></p>
+                  <p class="maindata">TOTAL <b> PROCUREMENT AMOUNT </b></p>
                   <h2> ₦<span class="animate-number" data-duration="3000"> {{number_format($materials->sum('amount_paid'))}} </span></h2>
                   <div class="clearfix"></div>
                 </div>
               </div>              
           </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="widget orange-4">
-              <div class="widget-content padding">
-                <div class="widget-icon">
-
-                </div>
-                <div class="text-box">
-                  <p class="maindata">TOTAL <b>PENDING PAYMENTS</b></p>
-                  <h2> ₦<span class="animate-number" data-value=" 384044840 " data-duration="3000"> {{number_format($pending->sum('amount_paid'))}} </span></h2>
-                  <div class="clearfix"></div>
-                </div>
-              </div>              
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="widget darkblue-2">
-              <div class="widget-content padding">
-                <div class="widget-icon">
-
-                </div>
-                <div class="text-box">
-                  <p class="maindata">TOTAL <b>PAID</b></p>
-                  <h2><span class="animate-number" data-value=" 13 " data-duration="3000"> {{number_format($paid->sum('amount_paid'))}} </span></h2>
-                  <div class="clearfix"></div>
-                </div>
-              </div>              
-          </div>
-        </div>
+  </div>
+                   
   </div>
 
   <div class="container">
