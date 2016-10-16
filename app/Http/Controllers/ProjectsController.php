@@ -145,8 +145,9 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        $Project = Project::findOrFail($id);
-        $Project->delete();
+        $project = Project::findOrFail($id);
+        File::delete(public_path('/img/').$project->logo); 
+        $project->delete();
 
         flash('Project Deleted', 'danger');
         return redirect()->route('projects.index');

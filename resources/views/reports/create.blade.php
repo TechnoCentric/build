@@ -61,7 +61,8 @@
                     @endif
                 </div>
             </div>
-            {!! Form::submit('Save',['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Post',['class' => 'btn btn-primary']) !!}
+            <a class="btn btn-danger" href="/projects/{{$project->id}}/reports"> Cancel</a>
             {!! Form::close() !!}  
         </div>
     </div>    

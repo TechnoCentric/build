@@ -85,6 +85,7 @@
 
 
     {!! Form::submit('Save',['class' => 'btn btn-success']) !!}
+    <a class="btn btn-danger" href="/projects"> Cancel</a>
     {!! Form::close() !!}
 @stop
 
