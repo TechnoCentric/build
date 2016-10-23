@@ -27,6 +27,8 @@ Route::resource('projects', 'ProjectsController');
 
 Route::get('projects/{id}/reports', 'ProjectsController@showReport');
 
+Route::get('projects/{id}/reports/create', 'ProjectsController@createReport');
+
 Route::get('projects/{id}/files/create', 'ProjectsController@createFile');
 
 Route::get('projects/{id}/files/{file}', [ 'as' => 'projects.file', 'uses' => 'ProjectsController@showFile']);

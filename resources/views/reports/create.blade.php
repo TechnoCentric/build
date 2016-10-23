@@ -15,26 +15,12 @@
     <div class="col-md-6">
        <div class="panel panel-default">
         <div class="panel-heading">
-            New Report
+            New {{$project->name}} Report
         </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::token()!!}
-                    {!! Form::label('type', 'Site', ['class' => 'control-label']) !!}
-                    
-                    <select class="selectpicker form-control" name="project_id">
-                        <option selected="selected" value="">Select Site</option>
-                        @foreach($projects as $project)
-                            <option value="{{$project->id}}">{{$project->name}}</option>
-                        @endforeach                       
-                    </select>           
-                    <p class="help-block"></p>
-                    @if($errors->has('type'))
-                        <p class="help-block">
-                            {{ $errors->first('type') }}
-                        </p>
-                    @endif
+                    {!! Form::token()!!}                    
                 </div>
             </div>
             <div class="row">
@@ -61,6 +47,7 @@
                     @endif
                 </div>
             </div>
+            {!!Form::hidden('project_id', $project->id)!!}
             {!! Form::submit('Post',['class' => 'btn btn-primary']) !!}
             <a class="btn btn-danger" href="/projects/{{$project->id}}/reports"> Cancel</a>
             {!! Form::close() !!}  

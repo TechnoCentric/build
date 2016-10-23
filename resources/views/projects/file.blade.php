@@ -6,15 +6,14 @@
 
 @section('content')
     <div class="page-heading">
-        <h1> <a href="/projects/{{$file->project_id}}/"><i class="fa fa-arrow-circle-o-left"></i></a> {{$file->name}} Files</h1>
-        <h3>Files under the {{$file->name}} Category</h3>             
+        <h1> <a href="/projects/{{$file->project_id}}/"><i class="fa fa-arrow-circle-o-left"></i></a> {{$file->name}} Files</h1>                     
     </div>    
 
     <div class="row">
         <div class="col-md-12 portlets ui-sortable">
             <div class="widget">
                 <div class="widget-header ">
-                    <h2>Basic Styles</h2>
+                    <h2>File Entries</h2>
                     <div class="additional-btn">
                         <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
                         <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>

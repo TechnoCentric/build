@@ -5,36 +5,47 @@
 @endsection
 
 @section('content')
-    <h3 class="page-title"> {{$project->name}} Site Reports</h3>
-    <p>
-        <a href="{{ route('reports.create') }}" class="btn btn-success">Add new</a>
-    </p>
-    @if(count($reports) > 0)
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                List
+    <div class="page-heading">
+        <h1> <a href="/projects/{{$project->id}}/"><i class="fa fa-arrow-circle-o-left"></i></a> {{$project->name}} Site Reports</h1>                     
+    </div>    
+
+    <div class="row">
+        <div class="col-md-12 portlets ui-sortable">
+            <div class="widget">
+                <div class="widget-header ">
+                    <h2>Report Entries</h2>
+                    <div class="additional-btn">
+                        <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                        <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                        <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                    </div>
+                </div>
+                <div class="widget-content padding">
+                    @if(count($reports) > 0)
+                        <table class="table table-bordered table-striped datatable">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                            <th>Body</th>                                                   
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($reports as $report)
+                                <tr>
+                                    <td>{{ $report->date->toFormattedDateString()}}</td>
+                                    <td>{{ $report->body }}</td>                                
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <p>No entries in table</p>
+                    @endif                                                 
+                </div>
+                <p style="padding-left: 15px;">                    
+                    <a href="/projects/{{$project->id}}/reports/create" class="btn btn-success">Add new</a>
+                </p>
             </div>
-            <div class="panel-body">
-                <table class="table table-bordered table-striped datatable">
-                    <thead>
-                    <tr>
-                        <th>Date</th>
-                    <th>Report Details</th>                                        
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($reports as $report)
-                        <tr>
-                            <td>{{ $report->date->toFormattedDateString() }}</td>
-                        <td>{{ $report->body }}</td>
-                                                    
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    @else
-        <p>No entries in table</p>
-    @endif
+        </div> 
+    </div>   
 @stop

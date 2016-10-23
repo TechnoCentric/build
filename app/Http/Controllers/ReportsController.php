@@ -27,9 +27,10 @@ class ReportsController extends Controller
 
     public function store(Requests\StoreReportsRequest $request)
     {
+        
         Report::create($request->all());
-
-        return redirect()->route('reports.index');
+        $project = \App\Project::find($request['project_id']);
+        return redirect()->route('projects.show', ['projects' => $project ]);
     }
 
     public function edit($id)

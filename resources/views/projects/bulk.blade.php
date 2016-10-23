@@ -37,6 +37,7 @@
     <div class="col-xs-4 col-md-4"></div>
     <div class="col-xs-4 col-md-4">
         {!! Form::submit('Upload',['class' => 'btn btn-success']) !!}
+        <a class="btn btn-danger" href="/projects/{{$file->project_id}}/files/{{$file->id}}">Cancel</a>
     </div>
     <div class="col-xs-4 col-md-4"></div>
     

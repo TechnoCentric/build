@@ -97,19 +97,21 @@ class MaterialsController extends Controller
 
     public function bulkUpload(Requests\uploadRequest $request)
     {
-       $project = $request->input('project_id');
+        $project = $request->input('project_id');
+        $file = $request->input('file_id');
         $results = \Excel::load($request->file('file'))->get();
          foreach ($results as $row) {
                 
-                if($row->material_type) {
-                    $material = new \App\Material;
-                    $material->material_type = $row->material_type;
+                if($row->name) {
+                    $material = new \App\Material;                    
+                    $material->material_name = $row->name;
+                    $material->lpo = $row->lpo;
                     $material->amount_paid = $row->amount_paid;
                     $material->payment_date = $row->payment_date;
                     $material->payment_type = $row->payment_type;
-                    $material->paid_to = $row->paid_to;
-                    $material->payment_status = $row->payment_status;
-                    $material->project_id = $project;                                               
+                    $material->paid_to = $row->paid_to;                    
+                    $material->project_id = $project; 
+                    $material->file_id = $file;                                              
                     $material->save();                  
                 }
                 else{ 

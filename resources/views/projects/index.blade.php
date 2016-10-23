@@ -16,12 +16,12 @@
               <div class="col-md-12">         
               @foreach($projects as $project)
                 <div class="col-sm-4 col-xs-4 col-md-4">
-                  <div class="thumbnail" style="height:230px !important;">
+                  <div class="thumbnail" style="height:230px;">
                       <a href="/projects/{{$project->id}}">
-                        <img src="/img/{{$project->picture}}" height="300" width="300">
+                        <img src="/img/{{$project->picture}}" class="img-responsive">
                       </a>
                       <div class="caption" align="center">
-                        <h3>{{$project->name}}</h3>                                                     
+                        <h4>{{$project->name}}</h4>                                                     
                       </div>
                   </div>
                 </div>

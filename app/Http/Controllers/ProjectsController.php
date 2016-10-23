@@ -115,6 +115,12 @@ class ProjectsController extends Controller
         return view('files.create',compact('project'));
     }
 
+    public function createReport($id)
+    {
+        $project = Project::findOrFail($id);                        
+        return view('reports.create',compact('project'));
+    }
+
      public function createMaterial($id, $file)
     {
         $project = Project::findOrFail($id);
