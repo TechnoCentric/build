@@ -36,7 +36,7 @@ class MaterialsController extends Controller
      */
     public function index()
     {
-    	$materials = Material::all();
+    	$materials = Material::paginate();
     	return view('materials.index', compact('materials'));
     }
 
@@ -63,8 +63,8 @@ class MaterialsController extends Controller
             ]);       
 
     	flash('Record Added', 'success');
-        $materials = Material::all();
-    	return redirect()->back();
+        $project = \App\Project::find($request['project_id']);
+    	return redirect()->route('projects.show', ['projects' => $project ]);
     }
 
     public function edit($id)
@@ -128,7 +128,7 @@ class MaterialsController extends Controller
         $start       = $request->input('report_date');
         $end         = $request->input('end_date');
         $project     = $request->input('project_id'); 
-        \Excel::create('report-'.$report_name, function($excel) {            
+        \Excel::create('Report '.$report_name, function($excel) {            
             $excel->sheet('New sheet', function($sheet) {                 
 
                 $materials =\App\Material::where('project_id', '=', $project)

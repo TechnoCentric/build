@@ -15,8 +15,7 @@ class CreateMaterialsTable extends Migration
         //
         Schema::create('materials', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string("material_type");
+            $table->increments('id');            
             $table->string("material_name");
             $table->string("lpo");
             $table->decimal("amount_paid", 15, 2);

@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <h3 class="page-title"> Materials Bulk Upload</h3>
+    <h3 class="page-title"> {{$file->name}} Bulk Upload</h3>
 
     {!! Form::open(['method' => 'POST', 'url' => '/bulk', 'files' => true]) !!}
       
@@ -13,18 +13,8 @@
         <div class="col-xs-4 col-md-4"></div>
         <div class="col-xs-4 col-md-4 form-group">
             {!! Form::token()!!}            
-             <select class="selectpicker form-control" name="project_id">
-                        <option selected="selected" value="">Select Site</option>
-                        @foreach($projects as $project)
-                            <option value="{{$project->id}}">{{$project->name}}</option>
-                        @endforeach                       
-                    </select>             
-            <p class="help-block"></p>
-            @if($errors->has('project_id'))
-                <p class="help-block">
-                    {{ $errors->first('project_id') }}
-                </p>
-            @endif
+             {!!Form::hidden('project_id', $project->id)!!}
+             {!!Form::hidden('file_id', $file->id)!!}
         </div>
          <div class="col-xs-4 col-md-4"></div>
     </div>    

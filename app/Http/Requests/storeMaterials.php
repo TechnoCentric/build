@@ -24,8 +24,7 @@ class storeMaterials extends Request
     public function rules()
     {
         return [
-            //
-            'material_type' => 'required',
+            //            
             'amount_paid' => 'required|numeric',
             'payment_date' => 'required',
             'paid_to' => 'required|string',

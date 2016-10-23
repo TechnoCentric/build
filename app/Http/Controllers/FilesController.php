@@ -51,9 +51,9 @@ class FilesController extends Controller
             'project_id'  => $request['project_id'] ,
             'total'    => $request['total'] ,            
             ]);
-        $files = File::all();
+        $project = \App\Project::find($request['project_id']);
     	flash('File Added', 'success');
-    	return redirect()->back();
+    	return redirect()->route('projects.show', ['projects' => $project]);
     }
 
     /**

@@ -148,24 +148,26 @@
 </div>
         <!-- Left Sidebar End -->        
         <!-- Start right content -->
-        <div class="content-page" style="padding-top: 60px;">
-          @if (session()->has('flash_notification.message'))
+        <div class="content-page" >
+          <div class="content">
+            @if (session()->has('flash_notification.message'))
               <div class="alert alert-{{ session('flash_notification.level') }}">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
                   {!! session('flash_notification.message') !!}
               </div>
-          @endif
-            @yield('content') 
-                                     
-        <!-- Footer Start -->
-        <footer>
-            BuildOptions App| Powered By <a href="http://www.technocentric.net" target="_blank">TechnoCentric</a>
-            <div class="footer-links pull-right">
-                <a href="#">About</a><a href="#">Support</a><a href="#">Terms of Service</a><a href="#">Legal</a><a href="#">Help</a><a href="#">Contact Us</a>
-            </div>
-        </footer>
-        <!-- Footer End -->         
+              @endif
+                @yield('content') 
+                                         
+            <!-- Footer Start -->
+            <footer>
+                BuildOptions App| Powered By <a href="http://www.technocentric.net" target="_blank">TechnoCentric</a>
+                <div class="footer-links pull-right">
+                    <a href="#">About</a><a href="#">Support</a><a href="#">Terms of Service</a><a href="#">Legal</a><a href="#">Help</a><a href="#">Contact Us</a>
+                </div>
+            </footer>
+            <!-- Footer End -->   
+          </div>      
         </div>
         <!-- ============================================================== -->
         <!-- End content here -->

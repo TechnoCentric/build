@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('title')
-    New Report
+    Create File
 @endsection
 
-@section('content')
-    <h3 class="page-title">Files</h3>
+@section('content')    
     {!! Form::open(['method' => 'POST', 'route' => ['files.store']]) !!}
     <p>&nbsp;</p>
     <div class="row">

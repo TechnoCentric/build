@@ -96,9 +96,17 @@ class ProjectsController extends Controller
     {
         $project = Project::findOrFail($id);
         $file = \App\File::find($file);
-        $quack = $file->materials; 
+        $quack = \App\Material::where('file_id', '=', $file->id)->get(); 
         $materials = $quack->sortByDesc('date');               
         return view('projects.file',compact('project', 'file', 'materials'));
+    }
+
+    public function getBulk($id, $file)
+    {
+        $project = Project::findOrFail($id);
+        $file = \App\File::find($file);
+
+        return view('projects.bulk', compact('project', 'file'));
     }
 
     public function createFile($id)
