@@ -10,7 +10,8 @@
         "laracasts/flash": "^2.0",
         "laravelcollective/html": "^5.2",
         "maatwebsite/excel": "^2.1",
-        "yajra/laravel-datatables-oracle": "^6.18"
+        "yajra/laravel-datatables-oracle": "^6.18",
+        "laravel-doctrine/acl": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

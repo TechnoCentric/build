@@ -13,12 +13,7 @@
         <div class="col-md-12 portlets ui-sortable">
             <div class="widget">
                 <div class="widget-header ">
-                    <h2>Report Entries</h2>
-                    <div class="additional-btn">
-                        <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
-                        <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
-                        <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
-                    </div>
+                    <h2>Report Entries</h2>                    
                 </div>
                 <div class="widget-content padding">
                     @if(count($reports) > 0)
@@ -43,7 +38,7 @@
                     @endif                                                 
                 </div>
                 <p style="padding-left: 15px;">                    
-                    <a href="/projects/{{$project->id}}/reports/create" class="btn btn-success">Add new</a>
+                    <a href="/projects/{{$project->id}}/reports/create" class="btn btn-success">New Report</a>
                 </p>
             </div>
         </div> 

@@ -137,10 +137,7 @@
         </li>
         <li>
           <a href="{{url('/report')}}"><i class="fa fa-area-chart text-orange-4"></i><span>Reports Generation</span></a>
-        </li>
-        <li>
-          <a href="{{url('/bulk')}}"><i class="fa fa-file-excel-o  text-lightblue-4"></i><span>Bulk Upload</span></a>
-        </li>
+        </li>        
  
              <div class="clearfix"></div>
     </div>    
@@ -171,12 +168,9 @@
         </div>
         <!-- ============================================================== -->
         <!-- End content here -->
-        <!-- ============================================================== -->
-
-        </div>
+        <!-- ============================================================== -->        
         <!-- End right content -->
 
-    </div>    
     <!-- End of page -->        
     <script>
         var resizefunc = [];

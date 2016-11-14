@@ -6,7 +6,7 @@
 
 @section('content')
   <div class="page-heading">
-    <h1><i class="fa fa-arrow-circle-o-left"></i> {{$project->name}}</h1>
+    <h1><a href="/projects/"><i class="fa fa-arrow-circle-o-left"></i></a> {{$project->name}}</h1>
     <h3>{{$project->location}}</h3>             
   </div>  
    <div class="divider" style="border-top: 1px solid grey"></div>
