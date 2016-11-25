@@ -95,45 +95,44 @@ class MaterialsController extends Controller
         return redirect()->route('materials.index');
     }
 
+    /**
+     * Bulk Upload
+     * @param  uploadRequest
+     * @return Response
+     */
     public function bulkUpload(Requests\uploadRequest $request)
     {
         $project = $request->input('project_id');
         $file = $request->input('file_id');
         $results = \Excel::load($request->file('file'))->get();
-         foreach ($results as $row) {
-                
-                if($row->name) {
-                    $material = new \App\Material;                    
-                    $material->material_name = $row->name;
-                    $material->lpo = $row->lpo;
-                    $material->amount_paid = $row->amount_paid;
-                    $material->payment_date = $row->payment_date;
-                    $material->payment_type = $row->payment_type;
-                    $material->paid_to = $row->paid_to;                    
-                    $material->project_id = $project; 
-                    $material->file_id = $file;                                              
-                    $material->save();                  
-                }
-                else{ 
-                    \flash('Workbook does not contain the right columns. Please check the format', 'danger');
-                    return redirect()->back();
-                }               
-            }           
+        foreach ($results as $row) {
+           if ($row->name && $row->lpo) {
+                \App\Material::create([
+                'material_name' => $row->name,
+                'lpo' => $row->lpo,
+                'amount_paid' => $row->amount_paid,
+                'payment_date' => $row->payment_date,
+                'payment_type' => $row->payment_type,
+                'paid_to' => $row->paid_to,                    
+                'project_id' => $project, 
+                'file_id' => $file, 
+                ]);  
+            }                                                                                               
+        }           
                 
         \flash('Bulk Upload Performed successfully', 'success');
         return redirect()->back();  
     }
 
     public function generateReport(Requests\reportRequest $request)
-    {
-        $report_name = $request->input('report_date').'_'.$request->input('end_date');
-        $start       = $request->input('report_date');
-        $end         = $request->input('end_date');
-        $project     = $request->input('project_id'); 
-        \Excel::create('Report '.$report_name, function($excel) {            
-            $excel->sheet('New sheet', function($sheet) {                 
-
-                $materials =\App\Material::where('project_id', '=', $project)
+    {        
+        $report_name = Request::input('report_date').'_'.Request::input('end_date');
+        $start       = Request::input('report_date');
+        $end         = Request::input('end_date');
+        $project     = Request::input('project_id');  
+        \Excel::create('Report '.$report_name, function($excel) {                        
+            $excel->sheet('New sheet', function($sheet) {                            
+                $materials = \App\Material::select('material_name', 'material_type', 'lpo', 'amount_paid', 'payment_date', 'payment_type', 'paid_to')->where('project_id', '=', $project)
                         ->whereBetween('payment_date', [$start, $end])
                         ->get();
 

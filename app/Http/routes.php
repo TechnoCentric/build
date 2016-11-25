@@ -72,9 +72,10 @@ Route::post('/results', function()
 						$end   = Request::input('end_date');
 						$project = Request::input('project_id'); 
 
-		    			$materials =\App\Material::where('project_id', '=', $project)
-								->whereBetween('payment_date', [$start, $end])
-								->get(); 	 
+		    			$materials = \App\Material::select('material_name', 'lpo', 'amount_paid', 'payment_date', 'payment_type', 'paid_to')->where('project_id', '=', $project)
+                        ->whereBetween('payment_date', [$start, $end])
+                        ->get();
+ 
 		        		$sheet->fromArray($materials);
 
 		    		});
@@ -82,14 +83,14 @@ Route::post('/results', function()
 				})->download('xls');	
 });
 
-/*Route::get('/blob', function ()
+Route::get('/blob', function ()
 {
 	$materials = DB::table('materials')->select('material_type', 'amount_paid', 'payment_date', 'payment_type', 'paid_to', 'payment_status', 'project_id')
 		->where('project_id', '=', 1)		
 		->get();
 
 		return $materials;
-});*/
+});
 
 Route::get('/bob', function ()
 {

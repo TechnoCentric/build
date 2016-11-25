@@ -21,14 +21,14 @@
                         @foreach($projects as $project)
                             <option value="{{$project->id}}">{{$project->name}}</option>
                         @endforeach                       
-                        </select>  
-                    </div>           
-                    <p class="help-block"></p>
-                    @if($errors->has('project_id'))
-                        <p class="help-block">
-                            {{ $errors->first('project_id') }}
-                        </p>
-                    @endif
+                        </select> 
+                        <p class="help-block"></p>
+                        @if($errors->has('project_id'))
+                            <p class="help-block">
+                                {{ $errors->first('project_id') }}
+                            </p>
+                        @endif 
+                    </div>                               
                 </div>                                                          
                 <div class="form-group">
                     {!! Form::label('report_date', 'From', ['class' => ' col-sm-2 control-label']) !!}                                        

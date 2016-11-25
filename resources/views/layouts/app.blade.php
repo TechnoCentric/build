@@ -57,7 +57,7 @@
 <body>
   <!-- Begin page -->
  
-  <div id="wrapper">
+  <div id="wrapper" class="forced enlarged">
     
     <!-- Top Bar Start -->
  
