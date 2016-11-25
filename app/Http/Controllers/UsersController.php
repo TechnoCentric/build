@@ -70,8 +70,8 @@ class UsersController extends Controller
 
     public function edit($id)
     {
-        $material = Material::findOrFail($id);
-        return view('materials.edit',compact('material'));
+        $user = User::findOrFail($id);
+        return view('users.edit',compact('user'));
     }
 
     public function update(Requests\UpdateMaterialsRequest $request, $id)

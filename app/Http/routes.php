@@ -25,6 +25,8 @@ Route::resource('reports', 'ReportsController');
 
 Route::resource('projects', 'ProjectsController');
 
+Route::resource('users', 'UsersController');
+
 Route::get('projects/{id}/reports', 'ProjectsController@showReport');
 
 Route::get('projects/{id}/reports/create', 'ProjectsController@createReport');
