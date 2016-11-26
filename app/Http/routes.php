@@ -41,14 +41,14 @@ Route::get('projects/{id}/files/{file}/materials/create', 'ProjectsController@cr
 
 
 Route::get('/home', 'HomeController@index');
-Route::get('/users', function(){
+/*Route::get('/users', function(){
 	$users = \App\User::all();
 	return view('users.index', compact('users'));
-});
+});*/
 
-Route::get('/users/create' , function(){	
+/*Route::get('/users/create' , function(){	
 	return view('users.create');
-});
+});*/
 
 Route::get('bulk', function ()
 {	
@@ -57,7 +57,7 @@ Route::get('bulk', function ()
 });
 Route::post('bulk', 'MaterialsController@bulkUpload');
 
-Route::post('/users', 'HomeController@create');
+//Route::post('/users', 'HomeController@create');
 
 Route::get('/report',  function(){
 	$projects = \App\Project::all();

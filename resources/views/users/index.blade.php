@@ -3,7 +3,7 @@
 @section('content')
     <h3 class="page-title">Users</h3>
     <p>
-        <a href="{{ url('users/create') }}" class="btn btn-success">Add new</a>
+        <a href="{{ url('users/create') }}" class="btn btn-success">New User</a>
     </p>
     @if(count($users) > 0)
         <div class="panel panel-default">
@@ -16,7 +16,7 @@
                     <tr>
                         <th>Email</th>
                     <th>Name</th>
-                    <th>Password</th>
+                    <th>Role</th>
                     
                         <th>&nbsp;</th>
                     </tr>
@@ -25,11 +25,10 @@
                     @foreach($users as $user)
                         <tr>
                             <td>{{ $user->email }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->password }}</td>
-                        
+                            <td>{{ $user->name }}</td>
+                            <td>{{$user->role}} </td>                                                                        
                             <td>
-                                <a href="{{ url('users/$user->id/edit') }}" class="btn btn-xs btn-info">Edit</a>
+                                <a href="{{$user->id}}/edit" class="btn btn-xs btn-info">Edit</a>
                                 
                             </td>
                         </tr>

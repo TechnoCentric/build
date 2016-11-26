@@ -104,9 +104,12 @@ class MaterialsController extends Controller
     {
         $project = $request->input('project_id');
         $file = $request->input('file_id');
+        $document = \App\File::find($file);
         $results = \Excel::load($request->file('file'))->get();
         foreach ($results as $row) {
            if ($row->name && $row->lpo) {
+                $document->total += $row->amount_paid;
+                $document->save();
                 \App\Material::create([
                 'material_name' => $row->name,
                 'lpo' => $row->lpo,
@@ -115,7 +118,7 @@ class MaterialsController extends Controller
                 'payment_type' => $row->payment_type,
                 'paid_to' => $row->paid_to,                    
                 'project_id' => $project, 
-                'file_id' => $file, 
+                'file_id' => $file,                
                 ]);  
             }                                                                                               
         }           

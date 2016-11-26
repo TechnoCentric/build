@@ -24,8 +24,9 @@ class StoreUsersRequest extends Request
     {
         return [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'email' => 'required|email|max:255|unique:users|exists:staff,email',
+            'password' => 'required|min:6|confirmed|regex:/^[\w-]*$/',
+            'role' => 'required',
             
         ];
     }
