@@ -21,10 +21,10 @@
                             <thead>
                             <tr>
                                 <th>Item Name</th>
-                            <th>Amount Paid</th>
-                            <th>Payment Date</th>
-                            <th>Paid To</th>
-                            <th>Payment Type</th>                                                               
+                                <th>Amount Paid</th>
+                                <th>Payment Date</th>
+                                <th class="hidden-sm hidden-xs">Paid To</th>
+                                <th class="hidden-sm hidden-xs">Payment Type</th>                                                               
                             </tr>
                             </thead>
                             <tbody>
@@ -33,8 +33,8 @@
                                     <td>{{ $material->material_name }}</td>
                                 <td>&#8358;{{ number_format($material->amount_paid, 2) }}</td>
                                 <td>{{ $material->payment_date->toFormattedDateString()}}</td>
-                                <td>{{ $material->paid_to }}</td>
-                                <td>{{ $material->payment_type }}</td>                                                                           
+                                <td class="hidden-sm hidden-xs">{{ $material->paid_to }}</td>
+                                <td class="hidden-sm hidden-xs">{{ $material->payment_type }}</td>                                                                           
                                 </tr>
                             @endforeach
                             </tbody>

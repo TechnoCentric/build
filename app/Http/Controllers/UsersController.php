@@ -46,7 +46,7 @@ class UsersController extends Controller
      * @param  storeMaterials
      * @return 
      */
-    public function store(Requests\storeUsersRequest $request)
+    public function store(Requests\StoreUsersRequest $request)
     {
     	User::create([
             'name' => $request['name'],

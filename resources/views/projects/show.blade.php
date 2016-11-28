@@ -68,9 +68,17 @@
       </div>               
   </div> 
   
-    <p>
-      <a class="btn btn-success" href="/projects/{{$project->id}}/reports">Site Reports</a>  
-      <a class="btn btn-success" href="/projects/{{$project->id}}/files/create">Create File</a></p>  
+    <div class="row">
+      <div class="col-md-1 col-sm-1 col-xs-1">
+              <a class="btn btn-success" href="/projects/{{$project->id}}/reports">Site Reports</a>  
+      </div>
+      <div class="col-md-1 col-sm-1 col-xs-1">
+         <a class="btn btn-success" href="/projects/{{$project->id}}/files/create">Create File</a></p>
+      </div>
+      <div class="col-md-1 col-sm-1 col-xs-1">
+         <a class="btn btn-success" href="/projects/{{$project->id}}/pdf">Export (PDF)</a>
+      </div>
+    </div>  
  
 
 @endsection

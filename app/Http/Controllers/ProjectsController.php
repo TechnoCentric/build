@@ -167,4 +167,17 @@ class ProjectsController extends Controller
         return redirect()->route('projects.index');
     }
 
+    /**
+     * Export a Project to PDF
+     * @param  
+     * @return Response
+     */
+    public function pdf($id)
+    {
+        $project = Project::findOrFail($id);
+        $files = $project->files;
+        $pdf = \PDF::loadView('layouts.pdf', [ 'project' => $project, 'files' => $files]);
+        return $pdf->stream($project->name.'.pdf');
+    }
+
 }

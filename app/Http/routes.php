@@ -27,6 +27,8 @@ Route::resource('projects', 'ProjectsController');
 
 Route::resource('users', 'UsersController');
 
+Route::get('/projects/{id}/pdf', 'ProjectsController@pdf');
+
 Route::get('projects/{id}/reports', 'ProjectsController@showReport');
 
 Route::get('projects/{id}/reports/create', 'ProjectsController@createReport');
@@ -41,6 +43,7 @@ Route::get('projects/{id}/files/{file}/materials/create', 'ProjectsController@cr
 
 
 Route::get('/home', 'HomeController@index');
+
 /*Route::get('/users', function(){
 	$users = \App\User::all();
 	return view('users.index', compact('users'));
