@@ -30,7 +30,7 @@
                             <tbody>
                             @foreach($materials as $material)
                                 <tr>
-                                    <td>{{ $material->material_name }}</td>
+                                <td>{{ $material->material_name }}</td>
                                 <td>&#8358;{{ number_format($material->amount_paid, 2) }}</td>
                                 <td>{{ $material->payment_date->toFormattedDateString()}}</td>
                                 <td class="hidden-sm hidden-xs">{{ $material->paid_to }}</td>
@@ -46,6 +46,7 @@
                 <p style="padding-left: 15px;">
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/bulk" class="btn btn-success">Bulk Upload</a>
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/materials/create" class="btn btn-success">Add new</a>
+                     <a class="btn btn-success" href="/projects/{{$project->id}}/files/{{$file->id}}/pdf">Export (PDF)</a>
                 </p>
             </div>
         </div> 

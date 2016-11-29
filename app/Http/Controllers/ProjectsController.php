@@ -176,8 +176,18 @@ class ProjectsController extends Controller
     {
         $project = Project::findOrFail($id);
         $files = $project->files;
-        $pdf = \PDF::loadView('layouts.pdf', [ 'project' => $project, 'files' => $files]);
+        $pdf = \PDF::loadView('pdf.project', [ 'project' => $project, 'files' => $files]);
         return $pdf->stream($project->name.'.pdf');
+    }
+
+    public function exportFile($id, $file)
+    {
+        $project = \App\Project::findOrFail($id);
+        $file = \App\File::find($file);
+        $quack = \App\Material::where('file_id', '=', $file->id)->get(); 
+        $materials = $quack->sortByDesc('date');               
+        $pdf = \PDF::loadView('pdf.file', [ 'project' => $project, 'file' => $file, 'materials' => $materials]);
+        return $pdf->stream($project->name. ' ' . $file->name. ' File '.'.pdf');
     }
 
 }

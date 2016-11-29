@@ -12,14 +12,16 @@
     }
 
     th, td {
+      width: 70%;
       border: 1px solid black;
+      margin: 0 auto;
     }
     html {
         position: relative;
         min-height: 100%;
     }
     body {
-        margin: 0 0 5px; /* bottom = footer height */
+        margin: 0 0 5px; 
     }
     footer {
         position: absolute;
@@ -65,6 +67,10 @@
             <td>{{number_format($file->total)}}</td>
           
         @endforeach
+      </tr>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td>{{number_format($files->sum('total'))}} </td>
       </tr>
     </tbody>
   </table> 

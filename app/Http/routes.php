@@ -29,6 +29,8 @@ Route::resource('users', 'UsersController');
 
 Route::get('/projects/{id}/pdf', 'ProjectsController@pdf');
 
+Route::get('/projects/{id}/files/{file}/pdf', 'ProjectsController@exportFile');
+
 Route::get('projects/{id}/reports', 'ProjectsController@showReport');
 
 Route::get('projects/{id}/reports/create', 'ProjectsController@createReport');
