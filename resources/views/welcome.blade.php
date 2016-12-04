@@ -38,9 +38,23 @@ Dashboard
   </div>
 
   <div class="container">
-      <div class="col-md-12">         
+      <div class="col-md-12 hidden-sm hidden-xs">         
             @foreach($projects as $project)
               <div class="col-sm-4 col-xs-4 col-md-4">
+                <div class="thumbnail" style="height:100%">
+                    <a href="/projects/{{$project->id}}">
+                      <img src="/img/{{$project->picture}} "  >
+                    </a>
+                    <div class="caption" align="center">
+                      <h4>{{$project->name}}</h4>                                                     
+                    </div>
+                </div>
+              </div>
+            @endforeach
+        </div>
+        <div class="col-sm-12 col-xs-12 hidden-md hidden-lg">
+          @foreach($projects as $project)
+              <div class="col-sm-12 col-xs-12">
                 <div class="thumbnail" style="height:100%">
                     <a href="/projects/{{$project->id}}">
                       <img src="/img/{{$project->picture}} "  >

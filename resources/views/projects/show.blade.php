@@ -76,7 +76,7 @@
          <a class="btn btn-success" href="/projects/{{$project->id}}/files/create">Create File</a></p>
       </div>
       <div class="col-md-1 col-sm-1 col-xs-1">
-         <a class="btn btn-success" href="/projects/{{$project->id}}/pdf">Export (PDF)</a>
+         <a class="btn btn-success" href="/projects/{{$project->id}}/pdf" target="_blank">Export (PDF)</a>
       </div>
     </div>  
  

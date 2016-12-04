@@ -92,13 +92,23 @@ class ProjectsController extends Controller
         return view('projects.reports',compact('project', 'reports'));
     }
 
-    public function showFile($id, $file)
+    public function showFile($id, $file, Request $request)
     {
-        $project = Project::findOrFail($id);
+        /*$project = Project::findOrFail($id);
         $file = \App\File::find($file);
         $quack = \App\Material::where('file_id', '=', $file->id)->get(); 
         $materials = $quack->sortByDesc('date');               
-        return view('projects.file',compact('project', 'file', 'materials'));
+        return view('projects.file',compact('project', 'file', 'materials'));*/
+        $project = Project::findOrFail($id);
+        $file = \App\File::find($file);
+        $query = $request->input('q');                   
+        $materials = $query
+            ?\App\Material::where('file_id', '=', $file->id)
+                            ->where('material_name', 'LIKE',  "%$query%" )->get()
+            :\App\Material::where('file_id', '=', $file->id)->get();
+            
+    
+         return view('projects.file',compact('project', 'file', 'materials'));
     }
 
     public function getBulk($id, $file)
@@ -180,12 +190,16 @@ class ProjectsController extends Controller
         return $pdf->stream($project->name.'.pdf');
     }
 
-    public function exportFile($id, $file)
+    public function exportFile($id, $file, Request $request)
     {
         $project = \App\Project::findOrFail($id);
         $file = \App\File::find($file);
-        $quack = \App\Material::where('file_id', '=', $file->id)->get(); 
-        $materials = $quack->sortByDesc('date');               
+        $quack = \App\Material::where('file_id', '=', $file->id)->get();
+        $query = $request->input('q');
+        $materials = $query
+            ?\App\Material::where('file_id', '=', $file->id)
+                            ->where('material_name', 'LIKE',  "%$query%" )->get()
+            :\App\Material::where('file_id', '=', $file->id)->get();                     
         $pdf = \PDF::loadView('pdf.file', [ 'project' => $project, 'file' => $file, 'materials' => $materials]);
         return $pdf->stream($project->name. ' ' . $file->name. ' File '.'.pdf');
     }

@@ -12,7 +12,14 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>        
+        <script src="//code.jquery.com/jquery-1.12.3.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+        <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+        <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
       <!-- Base Css Files -->
       <link href="{{ url('assets/libs/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css')}}" rel="stylesheet" />
       <link href="{{url('assets/libs/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
@@ -26,6 +33,8 @@
       <link href="{{url('assets/libs/sortable/sortable-theme-bootstrap.css')}}" rel="stylesheet" />
       <link href="{{url('assets/libs/bootstrap-datepicker/css/datepicker.css')}}" rel="stylesheet" />
       <link href="{{url('assets/libs/jquery-icheck/skins/all.css')}}" rel="stylesheet" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
       <!-- Code Highlighter for Demo -->
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
       <link href="{{url('assets/libs/prettify/github.css')}}" rel="stylesheet" />
@@ -102,15 +111,7 @@
 <!-- Top Bar End -->
  
 <div class="left side-menu">
-  <div class="sidebar-inner slimscrollleft">
-    <!-- Search form -->
- 
-    <form class="navbar-form">
-      <div class="form-group">
-        <input class="form-control" placeholder="Search" type="text"> <button class="btn search-button fa fa-search" style="font-style: italic" type="submit"></button>
-      </div>
-    </form>
- 
+  <div class="sidebar-inner slimscrollleft">    
     <div class="clearfix"></div><!--- Profile -->
  
     <div class="profile-info">      

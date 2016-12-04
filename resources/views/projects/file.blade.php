@@ -15,9 +15,9 @@
                 <div class="widget-header ">
                     <h2>File Entries</h2>                    
                 </div>
-                <div class="widget-content padding">
+                <div class="widget-content padding">                    
                     @if(count($materials) > 0)
-                        <table class="table table-bordered table-striped datatable">
+                        <table id="ent" class="table table-bordered table-striped datatable">
                             <thead>
                             <tr>
                                 <th>Item Name</th>
@@ -46,9 +46,19 @@
                 <p style="padding-left: 15px;">
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/bulk" class="btn btn-success">Bulk Upload</a>
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/materials/create" class="btn btn-success">Add new</a>
-                     <a class="btn btn-success" href="/projects/{{$project->id}}/files/{{$file->id}}/pdf">Export (PDF)</a>
+                     <a class="btn btn-success" href="/projects/{{$project->id}}/files/{{$file->id}}/pdf" target="_blank">Export (PDF)</a>
                 </p>
             </div>
         </div> 
     </div>   
+@stop
+@section('javascript')
+@parent
+    <script>
+        $(document).ready(function() {
+            $('#ent').DataTable( {
+                "scrollX": true
+            } );
+        } );        
+    </script>
 @stop
