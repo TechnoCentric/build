@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Material;
 use App\Project;
+use Yajra\Datatables\Datatables;
 
 class MaterialsController extends Controller
 {

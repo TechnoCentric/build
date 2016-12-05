@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\File as File;
+use Yajra\Datatables\Datatables;
 
 class FilesController extends Controller
 {

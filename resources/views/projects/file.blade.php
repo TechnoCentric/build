@@ -56,9 +56,7 @@
 @parent
     <script>
         $(document).ready(function() {
-            $('#ent').DataTable( {
-                "scrollX": true
-            } );
+            $('#ent').DataTable();
         } );        
     </script>
 @stop
