@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use App\DataTables\UsersDataTable;
 use App\User as User;
 
 class UsersController extends Controller
@@ -35,12 +35,16 @@ class UsersController extends Controller
      * Display all Materials
      * @return 
      */
-    public function index()
+    /*public function index()
     {
     	$users = User::all();
     	return view('users.index', compact('users'));
-    }
+    }*/
 
+     public function index(UsersDataTable $dataTable)
+    {
+        return $dataTable->render('users');
+    }
     /**
      * Save a record
      * @param  storeMaterials

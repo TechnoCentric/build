@@ -26,18 +26,7 @@
                                 <th class="hidden-sm hidden-xs">Paid To</th>
                                 <th class="hidden-sm hidden-xs">Payment Type</th>                                                               
                             </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($materials as $material)
-                                <tr>
-                                <td>{{ $material->material_name }}</td>
-                                <td>&#8358;{{ number_format($material->amount_paid, 2) }}</td>
-                                <td>{{ $material->payment_date->toFormattedDateString()}}</td>
-                                <td class="hidden-sm hidden-xs">{{ $material->paid_to }}</td>
-                                <td class="hidden-sm hidden-xs">{{ $material->payment_type }}</td>                                                                           
-                                </tr>
-                            @endforeach
-                            </tbody>
+                            </thead>                           
                         </table>
                     @else
                         <p>No entries in table</p>
@@ -55,8 +44,19 @@
 @section('javascript')
 @parent
     <script>
-        $(document).ready(function() {
-            $('#ent').DataTable();
-        } );        
+        $(function() {
+            $('#ent').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{!! route('projects.file') !!}',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'name', name: 'name' },
+                    { data: 'email', name: 'email' },
+                    { data: 'created_at', name: 'created_at' },
+                    { data: 'updated_at', name: 'updated_at' }
+                ]
+            });
+        });     
     </script>
 @stop

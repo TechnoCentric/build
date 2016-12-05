@@ -25,6 +25,11 @@ Route::resource('reports', 'ReportsController');
 
 Route::resource('projects', 'ProjectsController');
 
+Route::controller('datatables', 'DatatablesController', [
+ 	'anyData'  => 'datables.data',
+    'getIndex' => 'datatables',
+	]);
+
 Route::resource('users', 'UsersController');
 
 Route::get('/projects/{id}/pdf', 'ProjectsController@pdf');
