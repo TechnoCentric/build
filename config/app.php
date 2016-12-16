@@ -156,6 +156,7 @@ return [
          Collective\Html\HtmlServiceProvider::class,
          Laracasts\Flash\FlashServiceProvider::class,
          Yajra\Datatables\DatatablesServiceProvider::class,
+         Barryvdh\Snappy\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -220,6 +221,8 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
         'PDF'       => Barryvdh\DomPDF\Facade::class,
+        'Snappy' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
     ],
 
 ];

@@ -17,21 +17,35 @@
                 </div>
                 <div class="widget-content padding">                    
                     @if(count($materials) > 0)
-                        <table id="ent" class="table table-bordered table-striped datatable">
-                            <thead>
-                            <tr>
-                                <th>Item Name</th>
-                                <th>Amount Paid</th>
-                                <th>Payment Date</th>
-                                <th class="hidden-sm hidden-xs">Paid To</th>
-                                <th class="hidden-sm hidden-xs">Payment Type</th>                                                               
-                            </tr>
-                            </thead>                           
-                        </table>
+                        <div class="table-responsive">
+                            <table id="ent" class="table table-bordered table-striped datatable">
+                                <thead>
+                                <tr>
+                                    <th>Item Name</th>
+                                    <th>Amount Paid</th>
+                                    <th>Payment Date</th>
+                                    <th class="hidden-sm hidden-xs">Paid To</th>
+                                    <th class="hidden-sm hidden-xs">Payment Type</th>                                                               
+                                </tr>
+                                </thead>
+                                @foreach($materials as $material)
+                                <tr>
+                                   <td>{{$material->material_name}} </td>
+                                   <td> {{number_format($material->amount_paid)}} </td> 
+                                   <td> {{$material->payment_date->toFormattedDateString()}} </td>
+                                   <td class="hidden-sm hidden-xs"> {{$material->paid_to}} </td>
+                                   <td class="hidden-sm hidden-xs"> {{$material->payment_type}} </td>
+                                </tr>
+                                @endforeach                          
+                            </table>
+                        </div>
                     @else
                         <p>No entries in table</p>
-                    @endif                                                 
+                    @endif 
+
+                                                            
                 </div>
+
                 <p style="padding-left: 15px;">
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/bulk" class="btn btn-success">Bulk Upload</a>
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/materials/create" class="btn btn-success">Add new</a>
@@ -43,20 +57,7 @@
 @stop
 @section('javascript')
 @parent
-    <script>
-        $(function() {
-            $('#ent').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('projects.file') !!}',
-                columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'name', name: 'name' },
-                    { data: 'email', name: 'email' },
-                    { data: 'created_at', name: 'created_at' },
-                    { data: 'updated_at', name: 'updated_at' }
-                ]
-            });
-        });     
-    </script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
+    <script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
+    <script src="/vendor/datatables/buttons.server-side.js"></script>    
 @stop

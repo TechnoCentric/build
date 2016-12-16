@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\User;
+use App\Material;
 use Yajra\Datatables\Services\DataTable;
 
-class UsersDataTable extends DataTable
+class MaterialsDataTable extends DataTable
 {
     /**
      * Display ajax response.
@@ -24,9 +24,12 @@ class UsersDataTable extends DataTable
      *
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Support\Collection
      */
-    public function query()
+    public function query($id, $file)
     {
-        $query = User::query();
+        $project = \App\Project::findOrFail($id);
+        $file = \App\File::find($file);                          
+        $materials = Material::where('file_id', '=', $file->id)->get();
+        $query = $materials->query();
 
         return $this->applyScopes($query);
     }
@@ -36,14 +39,21 @@ class UsersDataTable extends DataTable
      *
      * @return \Yajra\Datatables\Html\Builder
      */
-    /*public function html()
+    public function html()
     {
         return $this->builder()
-                    ->columns($this->getColumns())
-                    ->ajax('')
-                    ->addAction(['width' => '80px'])
-                    ->parameters($this->getBuilderParameters());
-    }*/
+            ->columns([
+                'material_name',
+                 'amount_paid',
+                 'payment_date', 
+                 'payment_type', 
+                 'paid_to',
+            ])
+            ->parameters([
+                'dom' => 'Bfrtip',
+                'buttons' => ['csv', 'excel', 'print', 'reset', 'reload'],
+            ]);
+    }
 
     /**
      * Get columns.
@@ -53,11 +63,11 @@ class UsersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
-            'name',
-            'email',
-            'created_at',
-            'updated_at',
+            'material_name',
+            'amount_paid',
+            'payment_date', 
+            'payment_type', 
+            'paid_to',
         ];
     }
 
@@ -68,22 +78,6 @@ class UsersDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'users_' . time();
-    }
-
-    public function html()
-    {
-        return $this->builder()
-            ->columns([
-                'id',
-                'name',
-                'email',
-                'created_at',
-                'updated_at',
-            ])
-            ->parameters([
-                'dom' => 'Bfrtip',
-                'buttons' => ['csv', 'excel', 'pdf', 'print', 'reset', 'reload'],
-            ]);
+        return 'materials_' . time();
     }
 }

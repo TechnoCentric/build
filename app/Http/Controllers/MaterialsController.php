@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Material;
 use App\Project;
 use Yajra\Datatables\Datatables;
+use App\DataTables\MaterialsDataTable;
+
 
 class MaterialsController extends Controller
 {
@@ -35,10 +37,18 @@ class MaterialsController extends Controller
      * Display all Materials
      * @return 
      */
-    public function index()
+    public function index($id, $file)
     {
-    	$materials = Material::paginate();
-    	return view('materials.index', compact('materials'));
+    	/*$materials = Material::paginate();
+    	return view('materials.index', compact('materials'));*/
+
+        $project = \App\Project::findOrFail($id);
+        $file = \App\File::find($file);                          
+        $materials = Material::where('file_id', '=', $file->id)->get();
+            
+            
+        /*return $dataTable->render('projects.file', compact('project', 'file', 'materials'));*/
+         return view('projects.file',compact('project', 'file', 'materials'));
     }
 
     /**
