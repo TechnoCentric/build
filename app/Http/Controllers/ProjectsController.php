@@ -197,10 +197,11 @@ class ProjectsController extends Controller
         $file = \App\File::find($file);
         $quack = \App\Material::where('file_id', '=', $file->id)->get();
         $query = $request->input('q');
-        $materials = $query
+        $materials = \App\Material::where('file_id', '=', $file->id)->get();
+        /*$query
             ?\App\Material::where('file_id', '=', $file->id)
                             ->where('material_name', 'LIKE',  "%$query%" )->get()
-            :\App\Material::where('file_id', '=', $file->id)->get();                     
+            :*/                     
         $pdf = \PDF::loadView('pdf.file', [ 'project' => $project, 'file' => $file, 'materials' => $materials]);
         return $pdf->stream($project->name. ' ' . $file->name. ' File '.'.pdf');
     }     
