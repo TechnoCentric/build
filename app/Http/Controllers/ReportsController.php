@@ -10,6 +10,13 @@ use App\Report;
 class ReportsController extends Controller
 {
     //
+    /**
+     *Create a new instance of Project
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
      public function index()
     {
         $pre = Report::all();

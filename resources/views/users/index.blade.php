@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Users
+@endsection
+
 @section('content')
     <h3 class="page-title">Users</h3>
     <p>

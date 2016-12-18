@@ -21,7 +21,7 @@
         min-height: 100%;
     }
     body {
-        margin: 0 0 5px; 
+        margin: 0 0 5px;                 
     }
     footer {
         position: absolute;
@@ -32,8 +32,8 @@
     }
   </style>
 </head>      
-<body>	
-  <h3 align="center">BuildOptions Limited</h3>
+<body>	 
+  <h3 align="center">BuildOptions Limited</h3> 
   <h2 align="center">{{$project->name}} Project {{$file->name}} Report</h2>
   <h4 align="center">{{$project->location}}</h4>
   

@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/',  function () {
 	$projects = \App\Project::all();
 	$materials = \App\Material::all();	
     return view('welcome', compact('projects', 'materials')) ;
-});
+})->middleware('auth');
 
 Route::auth();
 Route::resource('files', 'FilesController');
