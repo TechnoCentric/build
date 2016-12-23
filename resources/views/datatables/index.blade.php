@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Users
+@endsection
+
 @section('content')
     <table class="table table-bordered" id="users-table">
         <thead>
@@ -12,6 +16,7 @@
             </tr>
         </thead>
     </table>
+     <a href="{{ url('users/create') }}" class="btn btn-success">New User</a>
 @stop
 
 @section('javascript')

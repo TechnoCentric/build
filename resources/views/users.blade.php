@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
+@section('title')
+	Users
+@endsection
+
 @section('content')
 
 {!!$dataTable->table()!!} 
-
+ <a href="{{ url('users/create') }}" class="btn btn-success">New User</a>
 @endsection
 
 @section('javascript')

@@ -86,7 +86,7 @@
         <ul class="nav navbar-nav navbar-right top-navbar">
                     
           <li class="dropdown topbar-profile">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> <strong>User</strong> <i class="fa fa-caret-down"></i></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> <strong> {{Auth::user()->name}} </strong> <i class="fa fa-caret-down"></i></a>
  
             <ul class="dropdown-menu">
               <li>
