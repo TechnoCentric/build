@@ -85,19 +85,7 @@
                             </p>
                         @endif
                     </div>
-                </div>   
-                <div class="form-group">
-                    {!! Form::label('contractor', 'Contractor', ['class' => ' col-sm-2 control-label']) !!}
-                     <div class="col-sm-8">
-                         {!!Form::checkbox('contractor', 'value', ['class' => 'form-control']) !!}                                                                
-                        <p class="help-block"></p>
-                        @if($errors->has('contractor'))
-                            <p class="help-block">
-                                {{ $errors->first('contractor') }}
-                            </p>
-                        @endif
-                     </div>                                               
-                </div>                              
+                </div>                                          
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-8">
                     {!!Form::hidden('project_id', $project->id)!!}

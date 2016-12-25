@@ -64,7 +64,7 @@ Route::get('bulk', function ()
 {	
 	$projects = \App\Project::all();
 	return view('projects.bulk', compact('projects'));
-});
+})->middleware('auth');
 Route::post('bulk', 'MaterialsController@bulkUpload');
 
 //Route::post('/users', 'HomeController@create');
@@ -72,7 +72,7 @@ Route::post('bulk', 'MaterialsController@bulkUpload');
 Route::get('/report',  function(){
 	$projects = \App\Project::all();
 	return view('report', compact('projects'));
-});
+})->middleware('auth');
 
 Route::post('/results', function()
 {	
@@ -93,7 +93,7 @@ Route::post('/results', function()
 		    		});
 
 				})->download('xls');	
-});
+})->middleware('auth');
 
 Route::get('/blob', function ()
 {
@@ -104,9 +104,9 @@ Route::get('/blob', function ()
 		return $materials;
 });
 
-Route::get('/bob', function ()
+/*Route::get('/bob', function ()
 {
 	$files =\App\File::all(); 	 
 
 		return $files;
-});
+});*/

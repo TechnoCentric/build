@@ -69,15 +69,17 @@
   </div> 
   
     <div class="row">
-      <div class="col-md-1 col-sm-1 col-xs-1">
-              <a class="btn btn-success" href="/projects/{{$project->id}}/reports">Site Reports</a>  
-      </div>
-      <div class="col-md-1 col-sm-1 col-xs-1">
-         <a class="btn btn-success" href="/projects/{{$project->id}}/files/create">Create File</a></p>
-      </div>
-      <div class="col-md-1 col-sm-1 col-xs-1">
-         <a class="btn btn-success" href="/projects/{{$project->id}}/pdf" target="_blank">Export (PDF)</a>
-      </div>
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <p>
+          <a class="btn btn-success" href="/projects/{{$project->id}}/reports">Site Reports</a>
+          <a class="btn btn-info" href="/projects/{{$project->id}}/files/create">Create File</a>
+          <a class="btn btn-success" href="/projects/{{$project->id}}/pdf" target="_blank">Export (PDF)</a>
+          @unless(Auth::user()->role = 'Admin')
+            <a class="btn btn-info" href="/projects/{{$project->id}}/edit">Edit Project</a>
+            <a class="btn btn-danger" href="/projects/{{$project->id}}/delete" onclick="return confirm('Are you sure you want to delete this project?');">Delete Project</a>
+          @endunless
+        </p>
+      </div>      
     </div>  
  
 

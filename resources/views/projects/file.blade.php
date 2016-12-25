@@ -47,9 +47,13 @@
                 </div>
 
                 <p style="padding-left: 15px;">
-                    <a href="/projects/{{$project->id}}/files/{{$file->id}}/bulk" class="btn btn-success">Bulk Upload</a>
+                    <a href="/projects/{{$project->id}}/files/{{$file->id}}/bulk" class="btn btn-success">Bulk Upload</a>                   
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/materials/create" class="btn btn-success">Add new</a>
                      <a class="btn btn-success" href="/projects/{{$project->id}}/files/{{$file->id}}/pdf" target="_blank">Export (PDF)</a>
+                     @unless(Auth::user()->role = 'Admin')
+                     <a href="/{{$file->id}}/edit" class="btn btn-info">Edit File</a>
+                     <a class="btn btn-danger" href="/files/{{$file->id}}/delete" onclick="return confirm('Are you sure you want to delete this File?');">Delete File</a>
+                     @endunless
                 </p>
             </div>
         </div> 

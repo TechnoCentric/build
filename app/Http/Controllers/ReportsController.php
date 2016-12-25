@@ -43,8 +43,13 @@ class ReportsController extends Controller
 
     public function edit($id)
     {
-        $report = Report::findOrFail($id);
-        return view('reports.edit',compact('report'));
+        if (\Auth::user()->role = 'Admin') {
+            $report = Report::findOrFail($id);
+            return view('reports.edit',compact('report'));
+        } else {
+            flash('You are not Authorized to perform this action', 'danger');
+            return redirect()->back();
+        }
     }
 
     public function update(Requests\UpdateReportsRequest $request, $id)
@@ -57,9 +62,14 @@ class ReportsController extends Controller
 
     public function destroy($id)
     {
-        $report = Report::findOrFail($id);
-        $report->delete();
-
-        return redirect()->route('reports.index');
+        if (\Auth::user()->role = 'Admin') {
+            $report = Report::findOrFail($id);
+            $report->delete();
+            flash('File Deleted', 'danger');
+            return redirect()->route('reports.index');
+        } else {
+            flash('You are not Authorized to perform this action', 'danger');
+            return redirect()->back();
+        }    
     }
 }

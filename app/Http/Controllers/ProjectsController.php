@@ -170,12 +170,17 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        $project = Project::findOrFail($id);
-        File::delete(public_path('/img/').$project->logo); 
-        $project->delete();
+       if (\Auth::user()->role = 'Admin') {
+           $project = Project::findOrFail($id);
+            File::delete(public_path('/img/').$project->logo); 
+            $project->delete();
 
-        flash('Project Deleted', 'danger');
-        return redirect()->route('projects.index');
+            flash('Project Deleted', 'danger');
+            return redirect()->route('projects.index');
+       } else{
+            flash('You are not authorized to perform this action', 'danger');
+            return redirect()->back();
+       }        
     }
 
     /**

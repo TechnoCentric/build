@@ -94,8 +94,9 @@ class FilesController extends Controller
     {
         
         if (Auth::user()->role = 'Admin') {
-            $project = Project::findOrFail($id);        
-            return view('files.edit',compact('project'));
+            $file = File::find($id); 
+            $project = Project::where('id', '=', $file->project_id);                   
+            return view('files.edit',compact('file', 'project'));
             
         }
         else {

@@ -92,11 +92,9 @@
               <li>
                 <a href="  {{ url('/profile') }} ">My Profile</a>
               </li>
-              
-              <li>
-               
-              </li>              
- 
+              @unless(Auth::user()->role = 'Admin')
+                <li><a href="{{url('/users')}}">Users </a>  </li>              
+              @endunless
               <li class="divider"></li> 
               <li>
                 <a class="md-trigger" data-modal="logout-modal" href="/logout"><i class="icon-logout-1"></i> Logout</a>
