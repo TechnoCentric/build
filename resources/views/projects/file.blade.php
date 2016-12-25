@@ -21,20 +21,20 @@
                             <table id="ent" class="table table-bordered table-striped datatable">
                                 <thead>
                                 <tr>
-                                    <th>Item Name</th>
-                                    <th>Amount Paid</th>
+                                    <th>Item Name</th>                                    
                                     <th>Payment Date</th>
                                     <th class="hidden-sm hidden-xs">Paid To</th>
-                                    <th class="hidden-sm hidden-xs">Payment Type</th>                                                               
+                                    <th class="hidden-sm hidden-xs">Payment Type</th>
+                                    <th>Amount Paid</th>                                                               
                                 </tr>
                                 </thead>
                                 @foreach($materials as $material)
                                 <tr>
-                                   <td>{{$material->material_name}} </td>
-                                   <td> {{number_format($material->amount_paid)}} </td> 
+                                   <td>{{$material->material_name}} </td>                                   
                                    <td> {{$material->payment_date->toFormattedDateString()}} </td>
                                    <td class="hidden-sm hidden-xs"> {{$material->paid_to}} </td>
                                    <td class="hidden-sm hidden-xs"> {{$material->payment_type}} </td>
+                                   <td> {{number_format($material->amount_paid)}} </td> 
                                 </tr>
                                 @endforeach                          
                             </table>

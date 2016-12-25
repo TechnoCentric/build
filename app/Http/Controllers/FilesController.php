@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\File as File;
 use Yajra\Datatables\Datatables;
+use Auth;
+use App\Project;
 
 class FilesController extends Controller
 {
@@ -90,8 +92,19 @@ class FilesController extends Controller
      */
     public function edit($id)
     {
-        $project = Project::findOrFail($id);        
-        return view('files.edit',compact('project'));
+        
+        if (Auth::user()->role = 'Admin') {
+            $project = Project::findOrFail($id);        
+            return view('files.edit',compact('project'));
+            
+        }
+        else {
+            flash('You are not authorized to perform this function', 'danger');
+            return redirect()->back();
+            
+        }
+
+            
     }
     /**
      * Update a Project

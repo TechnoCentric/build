@@ -1,45 +1,56 @@
 @extends('layouts.app')
 
-@section('content')
-    <h3 class="page-title">Reports</h3>
-    {!! Form::model($report,['method' => 'PUT', 'route' => ['reports.update', $report->id]]) !!}
+@section('title')
+    Edit Report
+@endsection
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Edit
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('date', 'Date', ['class' => 'control-label']) !!}
-                    {!! Form::text('date', old('date'), ['class' => 'form-control date']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('date'))
-                        <p class="help-block">
-                            {{ $errors->first('date') }}
-                        </p>
-                    @endif
+@section('content')
+    <div class="page-heading">
+        <h1> <a href="/reports"><i class="fa fa-arrow-circle-o-left"></i></a> <strong>Edit</strong>  Report</h1>                     
+    </div>  
+    <div class="widget">        
+        <div class="widget-content padding">                        
+            <div id="horizontal-form">
+                {!! Form::model($report,['method' => 'PUT', 'route' => ['reports.update', $report->id]]) !!}                
+                <div class="form-group">
+                      {!! Form::token()!!}     
+                     {!! Form::label('date', 'Date', ['class' => 'control-label col-sm-2']) !!}                                       
+                    <div class="col-sm-10">
+                        {!! Form::text('date', old('date'), ['class' => 'form-control date']) !!}
+                        <p class="help-block"></p>
+                        @if($errors->has('date'))
+                            <p class="help-block">
+                                {{ $errors->first('date') }}
+                            </p>
+                        @endif
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('body', 'Report Details', ['class' => 'control-label']) !!}
-                    {!! Form::text('body', old('body'), ['class' => 'form-control']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('body'))
-                        <p class="help-block">
-                            {{ $errors->first('body') }}
-                        </p>
-                    @endif
+                <div class="form-group">
+                    {!! Form::label('body', 'Report Details', ['class' => 'col-sm-2 control-label']) !!}                    
+                    <div class="col-sm-10">
+                    {!! Form::textarea('body', old('body'), ['class' => 'form-control']) !!}                      
+                            <p class="help-block"></p>
+                            @if($errors->has('body'))
+                                <p class="help-block">
+                                    {{ $errors->first('body') }}
+                                </p>
+                            @endif
+                    </div>
+                </div>                                  
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">                    
+                    {!! Form::submit('Update',['class' => 'btn btn-success']) !!}
+                    <a class="btn btn-danger" href="/reports"> Cancel</a>
+                    {!! Form::close() !!}  
                 </div>
+              </div>
+             
             </div>
-            
         </div>
     </div>
+    
+@endsection
 
-    {!! Form::submit('Update',['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!}
-@stop
 
 @section('javascript')
     @parent

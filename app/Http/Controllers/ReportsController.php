@@ -37,6 +37,7 @@ class ReportsController extends Controller
         
         Report::create($request->all());
         $project = \App\Project::find($request['project_id']);
+        flash('Report Posted', 'success');
         return redirect()->route('projects.show', ['projects' => $project ]);
     }
 
@@ -50,7 +51,7 @@ class ReportsController extends Controller
     {
         $report = Report::findOrFail($id);
         $report->update($request->all());
-
+         flash('Report Posted', 'success');
         return redirect()->route('reports.index');
     }
 

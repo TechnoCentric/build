@@ -55,22 +55,22 @@
     <caption><strong>File Items</strong></caption>
       <thead>
         <tr>
-          <th>Item Name</th>
-          <th>Amount Paid</th>
+          <th>Item Name</th>         
           <th>Payment Date</th>
           <th>Paid To</th>
           <th>Payment Type</th>
+          <th>Amount Paid</th>
         </tr>
       </thead>
     <tbody>
       
         @foreach($materials as $key => $material)
           <tr>
-            <td>{{ $material->material_name }}</td>
-            <td>{{number_format($material->amount_paid) }}</td>
+            <td>{{ $material->material_name }}</td>            
             <td>{{ $material->payment_date->toFormattedDateString()}}</td>
             <td>{{ $material->paid_to }}</td>
             <td>{{ $material->payment_type }}</td>
+            <td>{{number_format($material->amount_paid) }}</td>
           </tr>
         @endforeach      
       <tr>
