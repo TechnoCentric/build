@@ -22,10 +22,10 @@
                         </div>
                         <div class="widget-footer">
                             <div class="pull-left" style="padding: 10px !important;">
-                                @unless(Auth::user()->role = 'Admin')
+                                @if(Auth::user()->role = 'Admin')
                                  <a href="/reports/{{$report->id}}/edit" class="btn btn-info">Edit Report</a>
                                  <a class="btn btn-danger" href="/reports/{{$report->id}}/delete" onclick="return confirm('Are you sure you want to delete this File?');">Delete Report</a>                                 
-                                 @endunless    
+                                 @endif    
                             </div>
                         </div>   
                                                                     

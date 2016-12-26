@@ -74,10 +74,10 @@
           <a class="btn btn-success" href="/projects/{{$project->id}}/reports">Site Reports</a>
           <a class="btn btn-info" href="/projects/{{$project->id}}/files/create">Create File</a>
           <a class="btn btn-success" href="/projects/{{$project->id}}/pdf" target="_blank">Export (PDF)</a>
-          @unless(Auth::user()->role = 'Admin')
+          @if(Auth::user()->role = 'Admin')
             <a class="btn btn-info" href="/projects/{{$project->id}}/edit">Edit Project</a>
             <a class="btn btn-danger" href="/projects/{{$project->id}}/delete" onclick="return confirm('Are you sure you want to delete this project?');">Delete Project</a>
-          @endunless
+          @endif
         </p>
       </div>      
     </div>  
