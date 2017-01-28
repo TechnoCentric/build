@@ -77,7 +77,7 @@
                         
                         <div class="row">
                             <div class="col-sm-12">
-                            <button type="submit" class="btn btn-success btn-block">LOGIN</button>
+                            <button name="login" type="submit" class="btn btn-success btn-block">LOGIN</button>
                             </div>                            
                         </div>
                     </form>

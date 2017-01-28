@@ -92,8 +92,8 @@
                     </div>
                 </div> 
                 <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">                    
-                    {!! Form::submit('Create Project',['class' => 'btn btn-success']) !!}
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" name="submit" class="btn btn-success"> Create</button>                                        
                     <a class="btn btn-danger" href="/projects"> Cancel</a>
                     {!! Form::close() !!}  
                 </div>

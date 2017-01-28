@@ -99,7 +99,9 @@ class ProjectsController extends Controller
         $file = \App\File::find($file);
         $quack = \App\Material::where('file_id', '=', $file->id)->get(); 
         $materials = $quack->sortByDesc('date');               
-        return view('projects.file',compact('project', 'file', 'materials'));*/
+        return view('projects.file',compact('project', 'file', 'materials'));
+        
+        */
         $project = Project::findOrFail($id);
         $file = \App\File::find($file);
         $query = $request->input('q');                   

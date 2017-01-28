@@ -52,12 +52,11 @@ class UsersDataTable extends DataTable
      */
     protected function getColumns()
     {
-        return [
-            'id',
+        return [            
             'name',
             'email',
-            'created_at',
-            'updated_at',
+            'role',
+            'created_at',            
         ];
     }
 
@@ -74,12 +73,11 @@ class UsersDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->columns([
-                'id',
+            ->columns([                
                 'name',
                 'email',
-                'created_at',
-                'updated_at',
+                'role',
+                'created_at',                
             ])
             ->parameters([
                 'dom' => 'Bfrtip',

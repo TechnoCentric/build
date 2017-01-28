@@ -54,7 +54,7 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'us-02.live-paas.net'),
+            'host' => env('DB_HOST', 'services.us-02.live-paas.net'),
             'port' => env('DB_PORT', '32276'),
             'database' => env('DB_DATABASE', 'repo'),
             'username' => env('DB_USERNAME', 'root'),

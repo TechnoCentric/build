@@ -18,6 +18,7 @@ Route::get('/',  function () {
 })->middleware('auth');
 
 Route::auth();
+Route::resource('suppliers', 'SuppliersController');
 Route::resource('files', 'FilesController');
 Route::resource('materials', 'MaterialsController');
 
@@ -42,7 +43,7 @@ Route::get('projects/{id}/reports/create', 'ProjectsController@createReport');
 
 Route::get('projects/{id}/files/create', 'ProjectsController@createFile');
 
-Route::get('projects/{id}/files/{file}', [ 'as' => 'projects.file', 'uses' => 'MaterialsController@index']);
+Route::get('projects/{id}/files/{file}', [ 'as' => 'projects.file', 'uses' => 'ProjectsController@showFile']);
 
 Route::get('projects/{id}/files/{file}/bulk', [ 'as' => 'projects.bulk', 'uses' => 'ProjectsController@getBulk']);
 

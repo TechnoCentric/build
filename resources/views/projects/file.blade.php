@@ -15,6 +15,16 @@
                 <div class="widget-header ">
                     <h2>File Entries</h2>                    
                 </div>
+                {!! Form::open(['method' => 'GET']) !!}                                 
+                 <div class="col-md-1">
+                  </div>
+                   <div class="input-group add-on col-md-3">
+                      {!! Form::input('search', 'q', null, ['placeholder' => 'search', 'class' => 'form-control']) !!}
+                      <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                      </div>
+                    </div>                  
+                {!! Form::close()!!}  
                 <div class="widget-content padding">                    
                     @if(count($materials) > 0)
                         <div class="table-responsive">
@@ -50,10 +60,10 @@
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/bulk" class="btn btn-success">Bulk Upload</a>                   
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/materials/create" class="btn btn-success">Add new</a>
                      <a class="btn btn-success" href="/projects/{{$project->id}}/files/{{$file->id}}/pdf" target="_blank">Export (PDF)</a>
-                     @unless(Auth::user()->role = 'Admin')
-                     <a href="/{{$file->id}}/edit" class="btn btn-info">Edit File</a>
+                     @if(Auth::user()->role = 'Admin')
+                     <a href="/files/{{$file->id}}/edit" class="btn btn-info">Edit File</a>
                      <a class="btn btn-danger" href="/files/{{$file->id}}/delete" onclick="return confirm('Are you sure you want to delete this File?');">Delete File</a>
-                     @endunless
+                     @endif
                 </p>
             </div>
         </div> 

@@ -33,7 +33,7 @@
                             </div>
                             {!!Form::hidden('project_id', $file->project_id)!!}
                             {!!Form::hidden('total', 0)!!}            
-                            {!! Form::submit('Create',['class' => 'btn btn-success']) !!}
+                            {!! Form::submit('Save',['class' => 'btn btn-success']) !!}
                             <a class="btn btn-danger" href="/projects/{{$file->project_id}}"> Cancel</a>
                         {!! Form::close() !!}  
                     </div>
