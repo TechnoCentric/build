@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Project as Project;
 use App\Material;
+use Auth;
 use Yajra\Datatables\Datatables;
 
 class ProjectsController extends Controller
