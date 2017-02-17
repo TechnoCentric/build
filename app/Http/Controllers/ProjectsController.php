@@ -75,7 +75,7 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        $project = Project::findOrFail($id);
+        $project = Project::find($id);
         $files = $project->files;       
         return view('projects.show',compact('project', 'files'));
     }
