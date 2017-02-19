@@ -12,19 +12,18 @@
     <div class="row">
         <div class="col-md-12 portlets ui-sortable">
             <div class="widget">
-                <div class="widget-header ">
-                    <h2>File Entries</h2>                    
-                </div>
-                {!! Form::open(['method' => 'GET']) !!}                                 
-                 <div class="col-md-1">
-                  </div>
-                   <div class="input-group add-on col-md-3">
-                      {!! Form::input('search', 'q', null, ['placeholder' => 'search', 'class' => 'form-control']) !!}
-                      <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                      </div>
-                    </div>                  
-                {!! Form::close()!!}  
+                <div class="widget-header " style="margin-top: 20px;">
+                  {!! Form::open(['method' => 'GET']) !!}                                 
+                   <div class="col-md-5">
+                    </div>
+                     <div class="input-group add-on col-md-3">
+                        {!! Form::input('search', 'q', null, ['placeholder' => 'search', 'class' => 'form-control']) !!}
+                        <div class="input-group-btn">
+                          <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                      </div>                  
+                  {!! Form::close()!!}  
+                </div>                
                 <div class="widget-content padding">                    
                     @if(count($materials) > 0)
                         <div class="table-responsive">
@@ -46,7 +45,14 @@
                                    <td class="hidden-sm hidden-xs"> {{$material->payment_type}} </td>
                                    <td> {{number_format($material->amount_paid)}} </td> 
                                 </tr>
-                                @endforeach                          
+                                @endforeach   
+                                <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td style="text-align: right;"> <strong>Total</strong> </td>
+                                  <td><strong>{{number_format($material->sum('amount_paid'))}} </strong></td>
+                                </tr>                       
                             </table>
                         </div>
                     @else

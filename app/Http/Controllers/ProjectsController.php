@@ -95,14 +95,7 @@ class ProjectsController extends Controller
     }
 
     public function showFile($id, $file, Request $request)
-    {
-        /*$project = Project::findOrFail($id);
-        $file = \App\File::find($file);
-        $quack = \App\Material::where('file_id', '=', $file->id)->get(); 
-        $materials = $quack->sortByDesc('date');               
-        return view('projects.file',compact('project', 'file', 'materials'));
-        
-        */
+    {        
         $project = Project::findOrFail($id);
         $file = \App\File::find($file);
         $query = $request->input('q');                   
@@ -205,11 +198,7 @@ class ProjectsController extends Controller
         $file = \App\File::find($file);
         $quack = \App\Material::where('file_id', '=', $file->id)->get();
         $query = $request->input('q');
-        $materials = \App\Material::where('file_id', '=', $file->id)->get();
-        /*$query
-            ?\App\Material::where('file_id', '=', $file->id)
-                            ->where('material_name', 'LIKE',  "%$query%" )->get()
-            :*/                     
+        $materials = \App\Material::where('file_id', '=', $file->id)->get();                        
         $pdf = \PDF::loadView('pdf.file', [ 'project' => $project, 'file' => $file, 'materials' => $materials]);
         return $pdf->stream($project->name. ' ' . $file->name. ' File '.'.pdf');
     }     
