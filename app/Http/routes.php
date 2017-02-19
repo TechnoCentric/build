@@ -33,6 +33,8 @@ Route::controller('datatables', 'DatatablesController', [
 
 Route::resource('users', 'UsersController');
 
+Route::get('/projects/{id}', ['as' => 'projects.show', 'uses' => 'ProjectsController@show']);
+
 Route::get('/projects/{id}/pdf', 'ProjectsController@pdf');
 Route::get('/projects/{id}/files/{file}/pdf', 'ProjectsController@exportFile');
 
@@ -51,23 +53,12 @@ Route::get('projects/{id}/files/{file}/materials/create', 'ProjectsController@cr
 
 Route::get('/home', 'HomeController@index');
 
-/*Route::get('/users', function(){
-	$users = \App\User::all();
-	return view('users.index', compact('users'));
-});*/
-
-/*Route::get('/users/create' , function(){	
-	return view('users.create');
-});*/
-
 Route::get('bulk', function ()
 {	
 	$projects = \App\Project::all();
 	return view('projects.bulk', compact('projects'));
 })->middleware('auth');
 Route::post('bulk', 'MaterialsController@bulkUpload');
-
-//Route::post('/users', 'HomeController@create');
 
 Route::get('/report',  function(){
 	$projects = \App\Project::all();
@@ -103,10 +94,3 @@ Route::get('/blob', function ()
 
 		return $materials;
 });
-
-/*Route::get('/bob', function ()
-{
-	$files =\App\File::all(); 	 
-
-		return $files;
-});*/
