@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\DataTables\UsersDataTable;
 use App\User as User;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -77,6 +78,21 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
+     public function changePassword()
+    {
+        $user = Auth::User();
+        return view('users.password',compact('user'));
+    }
+
+    public function updatePassword(Requests\UpdatePasswordRequest $request)
+    {
+        $user = Auth::User();       
+        $user->password = bcrypt($request['password']);
+        $user->save();
+        flash('Password Changed Successfully');
+        return redirect()->back();
+    }
+
     public function destroy($id)
     {
         $user = User::find($id);       
@@ -84,5 +100,5 @@ class UsersController extends Controller
 
         flash('Record Deleted', 'danger');
         return redirect()->route('users.index');
-    }
+    }    
 }

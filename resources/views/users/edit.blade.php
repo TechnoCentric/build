@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    {!! Form::submit('Update',['class' => 'btn btn-danger']) !!}
+    {!! Form::submit('Update',['class' => 'btn btn-success']) !!}
     {!! Form::close() !!}
 @stop
 

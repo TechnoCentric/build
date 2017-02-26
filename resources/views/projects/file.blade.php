@@ -51,7 +51,7 @@
                                   <td></td>
                                   <td></td>
                                   <td style="text-align: right;"> <strong>Total</strong> </td>
-                                  <td><strong>{{number_format($material->sum('amount_paid'))}} </strong></td>
+                                  <td><strong>{{number_format($file->total)}} </strong></td>
                                 </tr>                       
                             </table>
                         </div>

@@ -33,6 +33,9 @@ Route::controller('datatables', 'DatatablesController', [
 
 Route::resource('users', 'UsersController');
 
+Route::post('user/password', 'UsersController@updatePassword');
+Route::get('/user/password', 'UsersController@changePassword');
+
 Route::get('/projects/{id}', ['as' => 'projects.show', 'uses' => 'ProjectsController@show']);
 
 Route::get('/projects/{id}/pdf', 'ProjectsController@pdf');
@@ -94,3 +97,8 @@ Route::get('/blob', function ()
 
 		return $materials;
 });
+/*Route::get('profile', function ()
+{
+	return view('users.profile');
+});
+*/

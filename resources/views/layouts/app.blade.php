@@ -90,7 +90,7 @@
  
             <ul class="dropdown-menu">
               <li>
-                <a href="  {{ url('/profile') }} ">My Profile</a>
+                <a href="  {{ url('/user/password') }} ">Change Password</a>
               </li>
               @if(Auth::user()->role = 'Admin')
                 <li><a href="{{url('/users')}}">Users </a>  </li>              
