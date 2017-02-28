@@ -122,6 +122,18 @@ class ProjectsController extends Controller
         return view('files.create',compact('project'));
     }
 
+    public function saveFile(Requests\CreateFile $request)
+    {
+        \App\File::create([
+            'name' => $request['name'],
+            'total' => 0,
+            'project_id' => $request['project_id'],
+            ]);
+        $project = $request['project_id'];
+        flash('File Created', 'success');
+        return redirect()->back();
+    }
+
     public function createReport($id)
     {
         $project = Project::findOrFail($id);                        

@@ -17,7 +17,7 @@
             <div class="widget">               
                 <div class="widget-content padding">                            
                     <div id="basic-form">
-                        {!! Form::open(['method' => 'POST', 'url' => '/projects', 'files' => true]) !!}
+                        {!! Form::open(['method' => 'POST', 'url' => '/files', 'files' => true]) !!}
                             {!! Form::token()!!}  
                             <div class="form-group">                        
                                 {!! Form::label('name', 'File Name', ['class' => 'col-sm-2 control-label']) !!}

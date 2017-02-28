@@ -47,6 +47,8 @@ Route::get('projects/{id}/reports/create', 'ProjectsController@createReport');
 
 Route::get('projects/{id}/files/create', 'ProjectsController@createFile');
 
+Route::post('files', 'ProjectsController@saveFile');
+
 Route::get('projects/{id}/files/{file}', [ 'as' => 'projects.file', 'uses' => 'ProjectsController@showFile']);
 
 Route::get('projects/{id}/files/{file}/bulk', [ 'as' => 'projects.bulk', 'uses' => 'ProjectsController@getBulk']);

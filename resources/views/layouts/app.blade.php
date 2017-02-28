@@ -87,7 +87,6 @@
                     
           <li class="dropdown topbar-profile">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> <strong> {{Auth::user()->name}} </strong> <i class="fa fa-caret-down"></i></a>
- 
             <ul class="dropdown-menu">
               <li>
                 <a href="  {{ url('/user/password') }} ">Change Password</a>

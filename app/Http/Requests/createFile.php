@@ -24,8 +24,7 @@ class createFile extends Request
     public function rules()
     {
         return [
-            'name'          => 'required|string',
-            'project_id'    => 'required'
+            'name'          => 'required|string',            
         ];
     }
 }
