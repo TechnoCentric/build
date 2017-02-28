@@ -122,7 +122,7 @@ class ProjectsController extends Controller
         return view('files.create',compact('project'));
     }
 
-    public function saveFile(Requests\CreateFile $request)
+    public function saveFile(Requests\createFile $request)
     {
         \App\File::create([
             'name' => $request['name'],
