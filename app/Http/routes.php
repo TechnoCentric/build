@@ -49,9 +49,12 @@ Route::get('projects/{id}/files/create', 'ProjectsController@createFile');
 
 Route::post('files', 'ProjectsController@saveFile');
 
+
 Route::get('projects/{id}/files/{file}', [ 'as' => 'projects.file', 'uses' => 'ProjectsController@showFile']);
 
 Route::get('projects/{id}/files/{file}/bulk', [ 'as' => 'projects.bulk', 'uses' => 'ProjectsController@getBulk']);
+
+Route::post('bulk', 'MaterialsController@bulkUpload');
 
 Route::get('projects/{id}/files/{file}/materials/create', 'ProjectsController@createMaterial');
 
@@ -63,7 +66,6 @@ Route::get('bulk', function ()
 	$projects = \App\Project::all();
 	return view('projects.bulk', compact('projects'));
 })->middleware('auth');
-Route::post('bulk', 'MaterialsController@bulkUpload');
 
 Route::get('/report',  function(){
 	$projects = \App\Project::all();

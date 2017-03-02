@@ -134,7 +134,7 @@ class MaterialsController extends Controller
             }                                                                                               
         }           
                 
-        \flash('Bulk Upload Performed successfully', 'success');
+        flash('Bulk Upload Performed successfully', 'success');
         return redirect()->to('/projects/'.$project.'/files/'.$file);  
     }
 
