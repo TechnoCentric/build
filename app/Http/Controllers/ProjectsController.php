@@ -98,13 +98,19 @@ class ProjectsController extends Controller
     {        
         $project = Project::findOrFail($id);
         $file = \App\File::find($file);
-        $query = $request->input('q');                   
-        $materials = $query
+        $materials = \App\Material::where('file_id', '=', $file->id)->get();
+        /*$query = $request->input('q');
+        if ($query) {
+            $materials = \App\Material::where('file_id', '=', $file->id)
+                            ->where('material_name', 'LIKE',  '%'.$query.'%' )-get();
+                            
+        }       
+        else {$materials = \App\Material::where('file_id', '=', $file->id)->get(); }   */        
+        /*$materials = $query
             ?\App\Material::where('file_id', '=', $file->id)
-                            ->where('material_name', 'LIKE',  '%'.$query.'%' )
-                            ->orWhere('paid_to', 'LIKE', '%'.$query.'%')->get()
+                            ->where('material_name', 'LIKE',  '%'.$query.'%' )-get();                            
             :\App\Material::where('file_id', '=', $file->id)->get();
-            
+            */
     
          return view('projects.file',compact('project', 'file', 'materials'));
     }
