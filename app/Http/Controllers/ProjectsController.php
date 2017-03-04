@@ -101,7 +101,8 @@ class ProjectsController extends Controller
         $query = $request->input('q');                   
         $materials = $query
             ?\App\Material::where('file_id', '=', $file->id)
-                            ->where('material_name', 'LIKE',  "%$query%" )->get()
+                            ->where('material_name', 'LIKE',  '%'.$query.'%' )
+                            ->orWhere('paid_to', 'LIKE', '%'.$query.'%')->get()
             :\App\Material::where('file_id', '=', $file->id)->get();
             
     
