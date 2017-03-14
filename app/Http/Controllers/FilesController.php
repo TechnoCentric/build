@@ -113,13 +113,14 @@ class FilesController extends Controller
      * @param  
      * @return Response
      */
-    public function update(UpdateFilesRequest $request, $id)
+    public function update(Requests\updateFile $request, $id)
     {
-        $Project = Project::findOrFail($id);
-        $Project->update($request->all());
+        $file = File::findOrFail($id);
+        $file->update($request->all());
+        $project = $file->project_id;
 
         flash('Record Updated', 'success');
-        return redirect()->route('files.index');
+        return redirect()->back();
     }
 
     /**
@@ -129,10 +130,11 @@ class FilesController extends Controller
      */
     public function destroy($id)
     {
-        $Project = Project::findOrFail($id);
-        $Project->delete();
+        $file = File::findOrFail($id);
+        $project = $file->project_id;
+        $file->delete();
 
         flash('Project Deleted', 'danger');
-        return redirect()->route('files.index');
+        return redirect()->to('/projects/'.$project.'/');
     }
 }
