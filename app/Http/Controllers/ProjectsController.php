@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Project as Project;
 use App\Material;
 use Auth;
 use Yajra\Datatables\Datatables;
+use File;
 
 class ProjectsController extends Controller
 {
@@ -98,7 +98,7 @@ class ProjectsController extends Controller
     {        
         $project = Project::findOrFail($id);
         $file = \App\File::find($file);
-        $materials = \App\Material::where('file_id', '=', $file->id)->get();
+        $materials = \App\Material::where('file_id', '=', $file->id)->get();        
         /*$query = $request->input('q');
         if ($query) {
             $materials = \App\Material::where('file_id', '=', $file->id)

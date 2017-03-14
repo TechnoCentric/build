@@ -70,15 +70,18 @@
   
     <div class="row">
       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-        <p>
+        
           <a class="btn btn-success" href="/projects/{{$project->id}}/reports">Site Reports</a>
           <a class="btn btn-info" href="/projects/{{$project->id}}/files/create">Create File</a>
           <a class="btn btn-success" href="/projects/{{$project->id}}/pdf" target="_blank">Export (PDF)</a>
           @if(Auth::user()->role = 'Admin')
-            <a class="btn btn-info" href="/projects/{{$project->id}}/edit">Edit Project</a>
-            <a class="btn btn-danger" href="/projects/{{$project->id}}/delete" onclick="return confirm('Are you sure you want to delete this project?');">Delete Project</a>
+            <a class="btn btn-info" href="/projects/{{$project->id}}/edit">Edit Project</a>            
+              {{ Form::open(['route' => ['projects.destroy', $project->id], 'method' => 'delete', 'style' => 'display:inline-block']) }}
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this project?')"> Delete</button>               
+              {{ Form::close() }}
+           <!--  <a class="btn btn-danger" href="/projects/{{$project->id}}/delete" onclick="return confirm('Are you sure you want to delete this project?');">Delete Project</a> -->
           @endif
-        </p>
+       
       </div>      
     </div>  
  

@@ -62,15 +62,17 @@
                                                             
                 </div>
 
-                <p style="padding-left: 15px;">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/bulk" class="btn btn-success">Bulk Upload</a>                   
                     <a href="/projects/{{$project->id}}/files/{{$file->id}}/materials/create" class="btn btn-success">Add new</a>
                      <a class="btn btn-success" href="/projects/{{$project->id}}/files/{{$file->id}}/pdf" target="_blank">Export (PDF)</a>
                      @if(Auth::user()->role = 'Admin')
                      <a href="/files/{{$file->id}}/edit" class="btn btn-info">Edit File</a>
-                     <a class="btn btn-danger" href="/files/{{$file->id}}/delete" onclick="return confirm('Are you sure you want to delete this File?');">Delete File</a>
+                     {{ Form::open(['route' => ['files.destroy', $file->id], 'method' => 'delete', 'style' => 'display:inline-block']) }}
+                          <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this File?')"> Delete</button>               
+                      {{ Form::close() }}
                      @endif
-                </p>
+               </div>
             </div>
         </div> 
     </div>   

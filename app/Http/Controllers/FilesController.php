@@ -113,7 +113,7 @@ class FilesController extends Controller
      * @param  
      * @return Response
      */
-    public function update(UpdatefilesRequest $request, $id)
+    public function update(UpdateFilesRequest $request, $id)
     {
         $Project = Project::findOrFail($id);
         $Project->update($request->all());
