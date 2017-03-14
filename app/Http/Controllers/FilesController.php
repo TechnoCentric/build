@@ -49,14 +49,32 @@ class FilesController extends Controller
      */
     public function store(Requests\createFile $request)
     {    	
-        File::create([          
-            'name'      => $request['name'] ,
-            'project_id'  => $request['project_id'] ,
-            'total'    => $request['total'] ,            
-            ]);
-        $project = \App\Project::find($request['project_id']);
-    	flash('File Added', 'success');
-    	return redirect()->route('projects.show', ['projects' => $project]);
+        if (count($request->input('name'))>0) {
+            $replicator = $request->input('name');
+            $dataSet = [];
+            foreach ($replicator as $name) {
+                $dataSet[] = [
+                    'name'  => $name,
+                    'project_id'    => $request['project_id'] ,
+                    'total'       => $request['total'] ,
+                ];
+            }
+
+            \DB::table('files')->insert($dataSet);
+            $project = \App\Project::find($request['project_id']);
+            flash('Files Created', 'success');
+            return redirect()->route('projects.show', ['projects' => $project]);
+        }
+        else{
+            File::create([          
+                'name'      => $request['name'] ,
+                'project_id'  => $request['project_id'] ,
+                'total'    => $request['total'] ,            
+                ]);
+            $project = \App\Project::find($request['project_id']);
+        	flash('File Added', 'success');
+        	return redirect()->route('projects.show', ['projects' => $project]);
+        }
     }
 
     /**

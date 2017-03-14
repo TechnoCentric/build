@@ -11,7 +11,7 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function homepage()
     {
         $this->visit('/')
               ->seePageIs('/login');        
@@ -20,7 +20,7 @@ class ExampleTest extends TestCase
     {
        $this->visit('/projects')
                 ->seePageIs('/login')
-                ->type('hayatu2@gmail.com', 'email')
+                ->type('hayatu89@live.com', 'email')
                 ->type('tiny700', 'password')
                 ->press('login')
                  ->seePageIs('/projects');
@@ -32,7 +32,7 @@ class ExampleTest extends TestCase
     {
         $this->visit('/projects/1')
                 ->seePageIs('/login')
-                ->type('hayatu2@gmail.com', 'email')
+                ->type('hayatu89@live.com', 'email')
                 ->type('tiny700', 'password')
                 ->press('login')
                  ->seePageIs('/projects/1');       
@@ -44,7 +44,7 @@ class ExampleTest extends TestCase
     {
         $this->visit('/projects/create')
                 ->seePageIs('/login')
-                ->type('hayatu2@gmail.com', 'email')
+                ->type('hayatu89@live.com', 'email')
                 ->type('tiny700', 'password')
                 ->press('login')
                 ->seePageIs('/projects/create')
@@ -56,5 +56,26 @@ class ExampleTest extends TestCase
                 ->type('20000000', 'budget')
                 ->press('submit')
                 ->seePageIs('/projects');       
+    }
+
+    public function addMaterial()
+    {
+        $this->visit('/projects/create')
+                ->seePageIs('/login')
+                ->type('hayatu89@live.com', 'email')
+                ->type('tiny700', 'password')
+                ->press('login')
+                ->seePageIs('/projects/create')
+                ->type('Hayatu Estate', 'name')
+                ->type('Residential', 'type')
+                ->type('Guzape', 'location')
+                ->type('Aliyu', 'supervisor')
+                ->attach('C:/Users/Hayatu/Pictures/ntel problem', 'picture')
+                ->type('20000000', 'budget')
+                ->press('submit')
+                ->seePageIs('/projects'); 
+
+        $this->visit('/projects/1/files/') 
+                ->seePageIs('/projects/1/files/'); 
     }
 }
